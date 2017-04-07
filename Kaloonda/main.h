@@ -23,6 +23,7 @@
 #include <errno.h>
 #include <string.h>
 #include <pthread.h>
+#include "connection.h"
 
 #define EXIT_HELP 10
 #define EXIT_VERSION 11

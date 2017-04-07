@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		806B57841E98056C002D1FAA /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 806B57831E98056C002D1FAA /* main.c */; };
+		806B578D1E981061002D1FAA /* connection.c in Sources */ = {isa = PBXBuildFile; fileRef = 806B578B1E981061002D1FAA /* connection.c */; };
+		806B57901E982038002D1FAA /* ThreadPool.c in Sources */ = {isa = PBXBuildFile; fileRef = 806B578E1E982038002D1FAA /* ThreadPool.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +28,10 @@
 		806B57801E98056C002D1FAA /* Kaloonda */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Kaloonda; sourceTree = BUILT_PRODUCTS_DIR; };
 		806B57831E98056C002D1FAA /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		806B578A1E980B67002D1FAA /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
+		806B578B1E981061002D1FAA /* connection.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = connection.c; sourceTree = "<group>"; };
+		806B578C1E981061002D1FAA /* connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = connection.h; sourceTree = "<group>"; };
+		806B578E1E982038002D1FAA /* ThreadPool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ThreadPool.c; path = ../ThreadPool.c; sourceTree = "<group>"; };
+		806B578F1E982038002D1FAA /* ThreadPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ThreadPool.h; path = ../ThreadPool.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +64,12 @@
 		806B57821E98056C002D1FAA /* Kaloonda */ = {
 			isa = PBXGroup;
 			children = (
+				806B578E1E982038002D1FAA /* ThreadPool.c */,
+				806B578F1E982038002D1FAA /* ThreadPool.h */,
 				806B578A1E980B67002D1FAA /* main.h */,
 				806B57831E98056C002D1FAA /* main.c */,
+				806B578B1E981061002D1FAA /* connection.c */,
+				806B578C1E981061002D1FAA /* connection.h */,
 			);
 			path = Kaloonda;
 			sourceTree = "<group>";
@@ -122,6 +132,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				806B57841E98056C002D1FAA /* main.c in Sources */,
+				806B578D1E981061002D1FAA /* connection.c in Sources */,
+				806B57901E982038002D1FAA /* ThreadPool.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

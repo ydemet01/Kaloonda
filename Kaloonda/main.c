@@ -8,10 +8,19 @@
 
 #include "main.h"
 
+int readConfigurationFile(){
+    
+    
+    
+    return EXIT_SUCCESS;
+}
+
+
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+    webserverInit(8080);
+    
+    
     
     return 0;
 }
