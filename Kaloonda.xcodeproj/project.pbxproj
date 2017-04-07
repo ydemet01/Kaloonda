@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		806B57801E98056C002D1FAA /* Kaloonda */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Kaloonda; sourceTree = BUILT_PRODUCTS_DIR; };
 		806B57831E98056C002D1FAA /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		806B578A1E980B67002D1FAA /* main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +58,7 @@
 		806B57821E98056C002D1FAA /* Kaloonda */ = {
 			isa = PBXGroup;
 			children = (
+				806B578A1E980B67002D1FAA /* main.h */,
 				806B57831E98056C002D1FAA /* main.c */,
 			);
 			path = Kaloonda;
