@@ -18,7 +18,7 @@ struct hostent *rem;
 int socketEstablishment(int port){
     /* Create socket */
     if ((sock = socket(PF_INET, SOCK_STREAM, 0)) < 0) {
-        perror("socket");
+        perror("Socket could not be established");
         exit(1);
     }
     
@@ -31,13 +31,13 @@ int socketEstablishment(int port){
     // Bind socket to address
     if (bind(sock, serverptr, serverlen) < 0) {
         perror("bind");
-        exit(1);
+        exit(BINDING_FAILED);
     }
     
     // Listen for connections
     if (listen(sock, 5) < 0) { // 5 max. requests in queue
         perror("listen");
-        exit(1);
+        exit(LISTEN_FAILED);
     }
     
     printf("Listening for connections to port %d\n", port);
@@ -47,12 +47,9 @@ int socketEstablishment(int port){
 
 
 int webserverInit(int wport){
-    int err;
+//    int err;
     port=wport;
-    if((err=socketEstablishment(port))!=EXIT_SUCCESS){
-        perror("Socket could not be established");
-        exit(0);
-    }
+    socketEstablishment(port);
 
     
     
@@ -61,12 +58,13 @@ int webserverInit(int wport){
         clientlen = sizeof(client);
         /* Accept connection */
         if ((newsock = accept(sock, clientptr, &clientlen)) < 0) {
-            perror("accept"); exit(1);
+            perror("Accept Failed");
+            exit(ACCEPT_FAILED);
         }
         /* Using IP address find DNS name (i.e., reverse DNS)*/
         if ((rem = gethostbyaddr((char *) &client.sin_addr.s_addr,sizeof (client.sin_addr.s_addr), client.sin_family)) == NULL) {
-            herror("gethostbyaddr"); // herror(): Similar to perror but uses the h_errno variable (set by name resolution functions to return error values).
-            exit(1);
+            herror("Get host by address failed");
+            exit(GET_HOST_FAILED);
         }
         printf("Accepted connection from %s\n", rem -> h_name);
      
@@ -79,6 +77,6 @@ int webserverInit(int wport){
          */
     }
     
-    return EXIT_SUCCESS;
+    return WEBSERVER_INIT_SUCCESS;
 }
 

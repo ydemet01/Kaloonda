@@ -24,9 +24,6 @@
 #include <string.h>
 #include <pthread.h>
 #include "connection.h"
-
-#define EXIT_HELP 10
-#define EXIT_VERSION 11
-#define EXIT_ON_ERROR_SYNTAX 90
+#include "httprequest.h"
 
 #endif /* main_h */
