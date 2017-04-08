@@ -13,6 +13,6 @@
 #include <errno.h>
 #include <stdlib.h>
 
-int serveRequest();
+void *serveRequest();
 
 #endif /* httprequest_h */

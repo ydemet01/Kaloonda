@@ -66,13 +66,12 @@ int threadpoolInit(int threads){
             return EXIT_FAILURE; // EXIT_CODE_OUT_OF_MEMORY
         }
         pthread_t p;
-        if ((err = pthread_create(&p, NULL, serveRequest(),node))) {
-            perror2("pthread_create", err);
+        if ((err = pthread_create(&p, NULL, serveRequest(), node))) {
+//            perror2("pthread_create", err);
             exit(1);
         }
         node->thread=&p;
         enqueue(threadpool, node);
-
     }
     
     
