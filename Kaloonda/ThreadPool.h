@@ -14,4 +14,22 @@
 #include <pthread.h>
 #include <stdlib.h>
 
+
+typedef struct thread_node {
+    struct thread_node *next;
+    pthread_t *thread;
+    pthread_cond_t cond;
+    //request
+
+} THREAD_NODE;
+
+typedef struct {
+    THREAD_NODE *head;
+    THREAD_NODE *tail;
+    pthread_mutex_t poolLock;
+    int length;
+}THREADPOOL;
+
+
+int threadpoolInit(int threads);
 #endif /* ThreadPool_h */
