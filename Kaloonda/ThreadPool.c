@@ -21,7 +21,7 @@ int enqueue (THREADPOOL *q, THREAD_NODE *node) {
     return EXIT_SUCCESS;
 }
 
-int dequeue(THREADPOOL *q, THREAD_NODE *retval){
+int dequeue(THREADPOOL *q, THREAD_NODE **retval){
     THREAD_NODE *p=NULL;
 // copy pointer used for free()
     if ((q == NULL) || (q->head == NULL)){
@@ -34,7 +34,7 @@ int dequeue(THREADPOOL *q, THREAD_NODE *retval){
     }
 
     p = q->head;
-    *retval=*q->head;
+    **retval=*q->head;
     q->head = q->head->next;
     free(p);
     --(q->length);
@@ -57,7 +57,7 @@ int initTHREADPOOL(THREADPOOL **threadpool) {
 
 int threadpoolInit(int threads){
 
-    *threadpool=NULL;
+    threadpool=NULL;
     initTHREADPOOL(&threadpool);
     int i=0, err;
     for (i=0;i<threads;i++) {
@@ -66,7 +66,7 @@ int threadpoolInit(int threads){
             return EXIT_FAILURE; // EXIT_CODE_OUT_OF_MEMORY
         }
         pthread_t p;
-        if ((err = pthread_create(&p, NULL, serveRequest(), node))) {
+        if ((err = pthread_create(&p, NULL, threadFunction, (void *) node))) {
 //            perror2("pthread_create", err);
             exit(1);
         }

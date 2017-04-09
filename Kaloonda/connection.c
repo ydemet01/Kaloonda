@@ -47,7 +47,7 @@ int socketEstablishment(int port){
 
 
 int webserverInit(int wport){
-//    int err;
+    int err;
     port=wport;
     socketEstablishment(port);
 
@@ -67,14 +67,37 @@ int webserverInit(int wport){
             exit(GET_HOST_FAILED);
         }
         printf("Accepted connection from %s\n", rem -> h_name);
+
+        THREAD_NODE *node=NULL;
         
-        
-        
-        if(read(newsock, buf, sizeof(buf))<0){
-            //perror("read");
+        if ((err = pthread_mutex_lock(&(threadpool->poolLock)))) { /* lock mutex */
+            printf("pthread_mutex_lock: %s\n",strerror(err));
             exit(1);
         }
-        printf("%s", buf);
+        if(threadpool->length>0){
+            
+            dequeue(threadpool, &node);
+        }
+        if ((err=pthread_mutex_unlock(&(threadpool->poolLock)))) { /* unlock mutex */
+            printf("pthread_mutex_unlock: %s\n",strerror(err));
+            exit(1);
+        }
+        
+        node->client=client;
+        node->clientlen=clientlen;
+        node->clientptr=clientptr;
+        node->newsock=newsock;
+        node->rem=rem;
+        
+        if ((err=pthread_mutex_unlock(&(node->nodemutex)))) { /* unlock mutex */
+            printf("pthread_mutex_unlock: %s\n",strerror(err));
+            exit(1);
+        }
+        
+//        if ((err = pthread_cond_signal(&(node->cond)))) {
+//            printf("pthread_cond_signal: %s\n",strerror(err));
+//            exit(1);
+//        }
      
         /*
          /////////
