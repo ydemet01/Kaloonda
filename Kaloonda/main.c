@@ -29,8 +29,8 @@ int checkArguments(int argc, char **argv, int *port, int *num_of_threads){
 int main(int argc, const char * argv[]) {
     int port, num_of_threads=_SC_THREAD_THREADS_MAX;
     //checkArguments(argc, argv, &port, &num_of_threads);
-    //webserverInit(8080);
-    serveRequest();
+    webserverInit(8080);
+//    serveRequest();
     
     
     return 0;
