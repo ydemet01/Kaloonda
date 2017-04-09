@@ -18,7 +18,7 @@ struct hostent *rem;
 int socketEstablishment(int port){
     /* Create socket */
     if ((sock = socket(PF_INET, SOCK_STREAM, 0)) < 0) {
-        perror("Socket could not be established");
+//        //perror("Socket could not be established");
         exit(1);
     }
     
@@ -30,13 +30,13 @@ int socketEstablishment(int port){
     
     // Bind socket to address
     if (bind(sock, serverptr, serverlen) < 0) {
-        perror("bind");
+        //perror("bind");
         exit(BINDING_FAILED);
     }
     
     // Listen for connections
     if (listen(sock, 5) < 0) { // 5 max. requests in queue
-        perror("listen");
+        //perror("listen");
         exit(LISTEN_FAILED);
     }
     
@@ -51,14 +51,14 @@ int webserverInit(int wport){
     port=wport;
     socketEstablishment(port);
 
-    
+    char buf[1024];
     
     while(1) {
         clientptr = (struct sockaddr *) &client;
         clientlen = sizeof(client);
         /* Accept connection */
         if ((newsock = accept(sock, clientptr, &clientlen)) < 0) {
-            perror("Accept Failed");
+            //perror("Accept Failed");
             exit(ACCEPT_FAILED);
         }
         /* Using IP address find DNS name (i.e., reverse DNS)*/
@@ -67,6 +67,14 @@ int webserverInit(int wport){
             exit(GET_HOST_FAILED);
         }
         printf("Accepted connection from %s\n", rem -> h_name);
+        
+        
+        
+        if(read(newsock, buf, sizeof(buf))<0){
+            //perror("read");
+            exit(1);
+        }
+        printf("%s", buf);
      
         /*
          /////////
