@@ -57,7 +57,7 @@ int initTHREADPOOL(THREADPOOL **threadpool) {
 
 int threadpoolInit(int threads){
 
-    THREADPOOL *threadpool=NULL;
+    *threadpool=NULL;
     initTHREADPOOL(&threadpool);
     int i=0, err;
     for (i=0;i<threads;i++) {
@@ -77,3 +77,5 @@ int threadpoolInit(int threads){
     
     return EXIT_SUCCESS;
 }
+
+

@@ -20,8 +20,7 @@ typedef struct thread_node {
     struct thread_node *next;
     pthread_t *thread;
     pthread_cond_t cond;
-    //request
-
+    char *request;
 } THREAD_NODE;
 
 typedef struct {
@@ -31,6 +30,6 @@ typedef struct {
     int length;
 }THREADPOOL;
 
-
+THREADPOOL *threadpool;
 int threadpoolInit(int threads);
 #endif /* ThreadPool_h */
