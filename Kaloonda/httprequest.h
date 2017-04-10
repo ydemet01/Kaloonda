@@ -16,6 +16,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include "ThreadPool.h"
+#include "signals.h"
 
 //void *serveRequest();
 void *threadFunction(void *);

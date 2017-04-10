@@ -21,7 +21,8 @@
 #define WEBSERVER_INIT_SUCCESS 18
 
 
-
+#define FILE_FOUND 40
+#define FILE_NOT_FOUND 41
 
 
 #endif /* signals_h */
