@@ -52,6 +52,12 @@ int initTHREADPOOL(THREADPOOL **threadpool) {
         return EXIT_FAILURE;
     (*threadpool)->head = (*threadpool)->tail = NULL;
     (*threadpool)->length = 0;
+    pthread_mutex_init(&(threadpool)->poolLock,NULL);
+   /* if (err = pthread_mutex_unlock(&(*threadpool)->poolLock)) {
+        //perror2(pthread_mutex_lock);
+        return EXIT_FAILURE;
+    }
+*/
     return EXIT_SUCCESS;
 }
 
@@ -68,7 +74,13 @@ int threadpoolInit(int threads){
         pthread_t p;
         if ((err = pthread_create(&p, NULL, threadFunction, (void *) node))) {
 //            perror2("pthread_create", err);
-            exit(1);
+            return EXIT_FAILURE;
+        }
+        pthread_mutex_init(&(*node->nodemutex),NULL);
+        if (err = pthread_mutex_lock(&(node->nodemutex))) {
+            /* lock Mutex */
+            //perror2(pthread_mutex_lock);
+            return EXIT_FAILURE;//EXIT_CODE_MUTEX_FAIL
         }
         node->thread=&p;
         enqueue(threadpool, node);
