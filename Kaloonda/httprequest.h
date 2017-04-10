@@ -15,9 +15,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include "ThreadPool.h"
 #include "signals.h"
+#include "ThreadPool.h"
 
+
+//THREADPOOL *threadpool;
 //void *serveRequest();
 void *threadFunction(void *);
 

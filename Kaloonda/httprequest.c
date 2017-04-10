@@ -150,7 +150,7 @@ int readResponseAndExecute(THREAD_NODE *n){//, char **function, char **link, cha
     /* Get message */
     if (read(n->newsock, buf, sizeof(buf)) < 0) {
         perror("read");
-        exit(1);
+//        exit(1);
     }
     keepAlive=serveRequest(buf, &function, &link, &protocolName, &protocolVersion);
     char *content=NULL;
@@ -187,7 +187,9 @@ int readResponseAndExecute(THREAD_NODE *n){//, char **function, char **link, cha
         }
         else{
             content_length=strlen(content);
-            char *contLengthAsString=itoa(content_length);
+            char contLengthAsString[10];
+            sprintf(contLengthAsString, "%lu", content_length);
+//            itoa(content_length, contLengthAsString, 10);
             unsigned long contLengthAsStringLength=strlen(contLengthAsString);
             getTypeFromExtension(extension, &content_type, &content_type_length);
 //            header_size=83+content_length+content_type_length;
@@ -200,6 +202,11 @@ int readResponseAndExecute(THREAD_NODE *n){//, char **function, char **link, cha
             sprintf(response, "HTTP/1.1 200 OK\r\nServer: Kaloonda\r\nContent-Length: %s\r\nConnection: %s\r\nContent-Type: %s\r\n\r\n%s\r\n", contLengthAsString, connection, content_type, content);
         }
         
+        /* Get message */
+        if (write(n->newsock, buf, sizeof(buf)) < 0) {
+            perror("write");
+            exit(1);
+        }
         
         
         
@@ -224,17 +231,24 @@ void *threadFunction(void *arg){
     int err;
     THREAD_NODE *n=(THREAD_NODE *)arg;
     while(1){
-        if ((err = pthread_mutex_lock(&(n->nodemutex)))) { /* lock mutex */
-            printf("pthread_mutex_lock: %s\n",strerror(err));
-            exit(1);
-        }
-        
         bool keepAlive=true;
         while(keepAlive){
             keepAlive=readResponseAndExecute(n);//, &function, &link, &protocolName, &protocolVersion);
             
         }
+        if ((err = pthread_mutex_lock(&(threadpool->poolLock)))) { /* lock mutex */
+            printf("pthread_mutex_lock: %s\n",strerror(err));
+            exit(1);
+        }
         enqueue(threadpool, n);
+        if ((err=pthread_mutex_unlock(&(threadpool->poolLock)))) { /* unlock mutex */
+            printf("pthread_mutex_unlock: %s\n",strerror(err));
+            exit(1);
+        }
+        if ((err = pthread_mutex_lock(&(n->nodemutex)))) { /* lock mutex */
+            printf("pthread_mutex_lock: %s\n",strerror(err));
+            exit(1);
+        }
     }
     
 }

@@ -40,7 +40,7 @@ typedef struct {
     int length;
 }THREADPOOL;
 
-static THREADPOOL *threadpool;
+extern THREADPOOL *threadpool;
 int threadpoolInit(int threads);
 int dequeue(THREADPOOL *q, THREAD_NODE **retval);
 int enqueue (THREADPOOL *q, THREAD_NODE *node);
