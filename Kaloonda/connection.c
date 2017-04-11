@@ -21,6 +21,9 @@ int socketEstablishment(int port){
 //        //perror("Socket could not be established");
         exit(1);
     }
+    const int optVal=1;
+    const socklen_t optLen=sizeof(optVal);
+    setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (void *) &optVal, optLen);
     
     server.sin_family = PF_INET; // Internet domain
     server.sin_addr.s_addr = htonl(INADDR_ANY); // My Internet address
@@ -30,13 +33,13 @@ int socketEstablishment(int port){
     
     // Bind socket to address
     if (bind(sock, serverptr, serverlen) < 0) {
-        //perror("bind");
+        perror("bind");
         exit(BINDING_FAILED);
     }
     
     // Listen for connections
     if (listen(sock, 5) < 0) { // 5 max. requests in queue
-        //perror("listen");
+        perror("listen");
         exit(LISTEN_FAILED);
     }
     
@@ -49,9 +52,9 @@ int socketEstablishment(int port){
 int webserverInit(int wport){
     int err;
     port=wport;
-    socketEstablishment(port);
+//    socketEstablishment(port);
 
-    char buf[1024];
+//    char buf[1024];
     
     while(1) {
         clientptr = (struct sockaddr *) &client;
@@ -69,13 +72,13 @@ int webserverInit(int wport){
         printf("Accepted connection from %s\n", rem -> h_name);
 
         THREAD_NODE *node=NULL;
-        
+        THREADPOOL *threadpool=NULL;
+        returnThreadpool(&threadpool);
         if ((err = pthread_mutex_lock(&(threadpool->poolLock)))) { /* lock mutex */
             printf("pthread_mutex_lock: %s\n",strerror(err));
             exit(1);
         }
         if(threadpool->length>0){
-            
             dequeue(threadpool, &node);
         }
         if ((err=pthread_mutex_unlock(&(threadpool->poolLock)))) { /* unlock mutex */
@@ -89,6 +92,14 @@ int webserverInit(int wport){
         node->newsock=newsock;
         node->rem=rem;
         
+        if ((err = pthread_mutex_lock(&(node->nodemutex)))) { /* lock mutex */
+            printf("pthread_mutex_lock: %s\n",strerror(err));
+            exit(1);
+        }
+        if((err=pthread_cond_signal(&(node->cond)))){
+            printf("pthread_mutex_unlock:%s\n", strerror(err));
+            exit(1);
+        }
         if ((err=pthread_mutex_unlock(&(node->nodemutex)))) { /* unlock mutex */
             printf("pthread_mutex_unlock: %s\n",strerror(err));
             exit(1);

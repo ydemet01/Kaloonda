@@ -27,8 +27,10 @@ int checkArguments(int argc, char **argv, int *port, int *num_of_threads){
 
 
 int main(int argc, const char * argv[]) {
-    int port, num_of_threads=_SC_THREAD_THREADS_MAX;
+    int port=8080;
+    unsigned long num_of_threads=100;//sysconf(_SC_THREAD_THREADS_MAX);
     //checkArguments(argc, argv, &port, &num_of_threads);
+    socketEstablishment(port);
     threadpoolInit(num_of_threads);
     webserverInit(8080);
 //    serveRequest();

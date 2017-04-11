@@ -1,0 +1,604 @@
+﻿<?php session_start(); ?>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+
+
+<head>
+
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+
+    <meta name="description" content=""/>
+
+
+    <meta name="keywords" content=""/>
+
+
+    <meta name="author" content=""/>
+
+
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
+
+
+    <title>EPL451 - Data Mining on the Web</title>
+
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
+
+    <script type="text/javascript" src="js/login.js"></script>
+
+
+</head>
+
+
+<body>
+
+
+<div id="site-wrapper">
+
+
+    <div id="header">
+
+
+        <div id="top">
+
+
+            <div class="left" id="logo"><a href="index.html"><img src="images/logo.png" alt=""/></a></div>
+
+
+            <div class="left navigation" id="main-nav">
+
+
+                <ul class="tabbed">
+
+
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="announcements.html">Anouncements</a></li>
+                    <li><a href="lectures.html">Schedule</a></li>
+                    <li><a href="labs.html">Labs</a></li>
+                    <li><a href="exercises.html">Assignments</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+
+
+                </ul>
+
+
+                <div class="clearer">&nbsp;</div>
+
+
+            </div>
+
+
+            <div class="clearer">&nbsp;</div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <p>&nbsp;</p>
+
+
+    <div class="main" id="main-one-column">
+
+
+        <div class="left" id="main-content">
+
+
+            <div class="section">
+
+
+                <div class="section-content">
+
+
+                    <div class="post">
+
+
+                        <div class="post-title">
+
+
+                            <h2 class="label label-orange">Schedule</h2>
+
+
+                        </div>
+
+
+                        <div class="post-date"></div>
+
+
+                        <div class="post-body">
+
+
+                            <table class="taskTable" cellspacing="0" cellpadding="0" border="1" bordercolor="#999999"
+                                   RULES=ROWS FRAME=HSIDES>
+
+
+                                <tr>
+
+
+                                    <td width="9%"><strong>Date</strong></td>
+
+
+                                    <td width="0%">&nbsp;</td>
+
+
+                                    <td width="41%"><strong>Description</strong></td>
+
+
+                                    <td width="41%"><strong>Bibliography</strong></td>
+
+
+                                    <td width="9%">
+                                        <div align="center"><strong>Slides</strong></div>
+                                    </td>
+
+
+                                </tr>
+
+
+                                <tr>
+
+
+                                    <td>16/01/2017</td>
+
+
+                                    <td>&nbsp;</td>
+
+
+                                    <td>What is data mining on the Web/ Introductory lecture</td>
+
+
+                                    <td><p>Chapter 1, <a href="http://mmds.org/#book" target="_blank">Mining Massive
+                                        Datasets</a>, by Jure Leskovec, Anand Rajaraman and Jeff Ullman, Cambridge
+                                        University Press, 2014</p>
+
+                                        <p><em>Optional Reading</em>:</p>
+                                        <ul>
+                                            <li>
+                                                <a href="http://www.ics.uci.edu/~smyth/courses/cs277/papers/mining_past.pdf">Mining
+                                                    the past to determine the future: problems and possibilities</a>, D.
+                                                J. Hand, <em>International Journal of Forecasting</em>, 25(3), 441-451,
+                                                2009.
+                                            </li>
+                                        </ul>
+                                    </td>
+
+
+                                    <td>
+                                        <div align="center"><a href="lectures/lecture1-17.pdf">Lecture 1</a></div>
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>19/01/2017</td>
+                                    <td>&nbsp;</td>
+                                    <td>Map-Reduce Framework</td>
+                                    <td>Chapter 2, <a href="http://mmds.org/#book" target="_blank">Mining Massive
+                                        Datasets</a>, by Jure Leskovec, Anand Rajaraman and Jeff Ullman, Cambridge
+                                        University Press, 2014
+                                    </td>
+                                    <td>
+                                        <div align="center"><a href="lectures/lecture2.pdf">Lecture 2</a><a
+                                                href="lectures/lecture1-15.pdf"></a></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>23/01/2017</td>
+                                    <td>&nbsp;</td>
+                                    <td>Map-Reduce Framework</td>
+                                    <td><p>Chapter 2, <a href="http://mmds.org/#book" target="_blank">Mining Massive
+                                        Datasets</a>, by Jure Leskovec, Anand Rajaraman and Jeff Ullman, Cambridge
+                                        University Press, 2014</p>
+
+                                        <p><em>Optional Reading:</em></p>
+                                        <ul>
+                                            <li>Feng Li, Beng Chin Ooi, M. Tamer Özsu, and Sai Wu. 2014.<a
+                                                    href="http://dl.acm.org/citation.cfm?id=2503009&CFID=410256995&CFTOKEN=59159248">
+                                                Distributed data management using MapReduce</a>. <em>ACM Comput.
+                                                Surv.</em> 46, 3, Article 31 (January 2014), 42 pages. 
+                                            </li>
+                                            <li>Jeffrey Dean and Sanjay Ghemawat. (2004) <a
+                                                    href="http://portal.acm.org/citation.cfm?id=1251264">MapReduce:
+                                                Simplified Data Processing on Large Clusters.</a> Proceedings of the 6th
+                                                Symposium on Operating System Design and Implementation (OSDI 2004),
+                                                pages 137-150.
+                                            </li>
+                                            <li>Sanjay Ghemawat, Howard Gobioff, and Shun-Tak Leung. (2003) <a
+                                                    href="http://portal.acm.org/citation.cfm?id=945450">The Google File
+                                                System.</a> Proceedings of the 19th ACM Symposium on Operating Systems
+                                                Principles (SOSP-03), pages 29-43.
+                                            </li>
+                                            <li>Lin &amp; Dyer, Chapter 2, <a
+                                                    href="http://www.umiacs.umd.edu/~jimmylin/book.html">MapReduce
+                                                Basics</a></li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <div align="center"><a href="lectures/lecture2.pdf">Lecture 3</a></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>30/01/2017</td>
+                                    <td>&nbsp;</td>
+                                    <td>Frequent itemsets and Association rules</td>
+                                    <td><p>Chapter 6, <a href="http://mmds.org/#book" target="_blank">Mining Massive
+                                        Datasets</a>, by Jure Leskovec, Anand Rajaraman and Jeff Ullman, Cambridge
+                                        University Press, 2014</p>
+
+                                        <p><em>Optional Reading:</em></p>
+                                        <ul>
+                                            <li>Rakesh Agrawal and Ramakrishnan Srikant: <a
+                                                    href="http://cs-http//rakesh.agrawal-family.com/papers/vldb94apriori.pdf">Fast
+                                                Algorithms for Mining Association Rules</a>. In International Conference
+                                                on Very Large Databases, VLDB 1994.
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <div align="center"><a href="lectures/lec02-assocrules.pdf">Lecture 4</a></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>02/02/2017</td>
+                                    <td>&nbsp;</td>
+                                    <td>Frequent itemsets and Association rules</td>
+                                    <td>Chapter 6, <a href="http://mmds.org/#book" target="_blank">Mining Massive
+                                        Datasets</a>, by Jure Leskovec, Anand Rajaraman and Jeff Ullman, Cambridge
+                                        University Press, 2014
+                                    </td>
+                                    <td>
+                                        <div align="center"><a href="lectures/lecture3.pdf"></a><a
+                                                href="lectures/lec02-assocrules.pdf">Lecture 5</a></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>06/02/2017</td>
+                                    <td>&nbsp;</td>
+                                    <td>Finding Similar Items</td>
+                                    <td><p>Chapter 3, <a href="http://mmds.org/#book" target="_blank">Mining Massive
+                                        Datasets</a>, by Jure Leskovec, Anand Rajaraman and Jeff Ullman, Cambridge
+                                        University Press, 2014</p></td>
+                                    <td>
+                                        <div align="center"><a href="lectures/lecture3.pdf">Lecture 6</a><a
+                                                href="lectures/lec02-assocrules.pdf"></a></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>09/02/2017</td>
+                                    <td>&nbsp;</td>
+                                    <td>Finding Similar Items</td>
+                                    <td>Chapter 3, <a href="http://mmds.org/#book" target="_blank">Mining Massive
+                                        Datasets</a>, by Jure Leskovec, Anand Rajaraman and Jeff Ullman, Cambridge
+                                        University Press, 2014
+                                    </td>
+                                    <td>
+                                        <div align="center"><a href="lectures/lecture3.pdf">Lecture 7</a><a
+                                                href="lectures/lec02-assocrules.pdf"></a></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>13/02/2017</td>
+                                    <td>&nbsp;</td>
+                                    <td>Clustering</td>
+                                    <td><p>Chapter 7, <a href="http://mmds.org/#book" target="_blank">Mining Massive
+                                        Datasets</a>, by Jure Leskovec, Anand Rajaraman and Jeff Ullman, Cambridge
+                                        University Press, 2014</p>
+
+                                        <p><em>Optional Reading:</em></p>
+                                        <ul>
+                                            <li>Jain, A. K., Murty, M. N., and Flynn, P. J. 1999. Data clustering: a
+                                                review. <em>ACM Comput. </em><em>Surv.</em> 31, 3 (Sep. 1999), 264-323.
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <div align="center"><a href="lectures/lecture4.pdf">Lecture 8</a></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>16/02/2017</td>
+                                    <td>&nbsp;</td>
+                                    <td>Clustering</td>
+                                    <td><p>Chapter 7, <a href="http://mmds.org/#book" target="_blank">Mining Massive
+                                        Datasets</a>, by Jure Leskovec, Anand Rajaraman and Jeff Ullman, Cambridge
+                                        University Press, 2014</p>
+
+                                        <p>&nbsp;</p></td>
+                                    <td>
+                                        <div align="center"><a href="lectures/lecture4.pdf">Lecture 9</a></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>20/02/2017</td>
+                                    <td>&nbsp;</td>
+                                    <td>Recommendation Systems</td>
+                                    <td><p>Chapter 9, <a href="http://mmds.org/#book" target="_blank">Mining Massive
+                                        Datasets</a>, by Jure Leskovec, Anand Rajaraman and Jeff Ullman, Cambridge
+                                        University Press, 2014</p>
+
+                                        <p><em>Optional Reading:</em></p>
+                                        <ul>
+                                            <li><a href="http://www.wired.com/wired/archive/12.10/tail.html">The Long
+                                                Tail</a> in Wired
+                                            </li>
+                                            <li><a href="http://www.netflixprize.com/">Netflix Challenge</a></li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <div align="center"><a href="lectures/recsys.pdf">Lecture 10</a></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>23/02/2017</td>
+                                    <td>&nbsp;</td>
+                                    <td>Dimensionality Reduction</td>
+                                    <td><p>Chapter 9, <a href="http://mmds.org/#book" target="_blank">Mining Massive
+                                        Datasets</a>, by Jure Leskovec, Anand Rajaraman and Jeff Ullman, Cambridge
+                                        University Press, 2014</p>
+
+                                        <p><em>Optional Reading:</em></p>
+                                        <ul>
+                                            <li>For Petros Drineas’ tutorials on linear-algebra methods for data mining
+                                                see <a href="http://www.cs.rpi.edu/~drinep/talks.html">here</a>.
+                                            </li>
+                                            <li><a href="http://www.cs.iastate.edu/~cs577/handouts/svd.pdf">Singular
+                                                Value Decomposition</a> by <a href="http://www.cs.iastate.edu/~jia"
+                                                                              target="_top">Yan-Bin Jia</a></li>
+                                            <li> M. Brand. <a
+                                                    href="http://www.siam.org/proceedings/datamining/2003/dm03_04BrandM.pdf">Fast
+                                                online svd revisions for lightweight recommender systems</a>. In
+                                                Proceedings of the 3rd SIAM International Conference on Data Mining,
+                                                2003.
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <div align="center"><a href="lectures/dim-red.pptx">Lecture 11</a></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                  <td>02/03/2017</td>
+                                  <td>&nbsp;</td>
+                                  <td><p><strong>Midterm</strong></p></td>
+                                  <td><p>Chapters: 1, 2, 3, 6, 7, 9</p></td>
+                                  <td><div align="center"><a href="midterm.pdf">Midterm sample</a></div></td>
+                                </tr>
+                                <tr>
+                                    <td>06/03/2017</td>
+                                    <td>&nbsp;</td>
+                                    <td>Link Analysis and Web search</td>
+                                    <td><p>Chapter 5,<a href="http://mmds.org/#book" target="_blank">Mining Massive
+                                        Datasets</a>, by Jure Leskovec, Anand Rajaraman and Jeff Ullman, Cambridge
+                                        University Press, 2014</p>
+
+                                        <p><em>Optional Reading</em>:</p>
+                                        <ul>
+                                            <li>
+                                                <a href="http://www.sciencedirect.com/science?_ob=ArticleURL&amp;_udi=B6TYT-3WRC342-2N&amp;_user=4422&amp;_coverDate=04/30/1998&amp;_rdoc=1&amp;_fmt=high&amp;_orig=search&amp;_sort=d&amp;_docanchor=&amp;view=c&amp;_searchStrId=1222727636&amp;_rerunOrigin=scholar.google&amp;_acct=C000059600&amp;_version=1&amp;_urlVersion=0&amp;_userid=4422&amp;md5=50f30d8780a889bfc4fd59c1bc5c2b19">Anatomy
+                                                    of a large-scale hypertextual Web search engine</a>, original paper
+                                                from 1998 by Brin and Page on PageRank
+                                            </li>
+                                            <li><a href="http://meyer.math.ncsu.edu/meyer/ps_files/deeperinsidepr.pdf">Deeper
+                                                inside PageRank</a>, Langville and Meyer, 2004
+                                            </li>
+                                            <li><a href="http://meyer.math.ncsu.edu/meyer/ps_files/deeperinsidepr.pdf">A
+                                                Survey of Eigenvector Methods for Web Information Retrieval</a>,
+                                                Langville and Meyer, 2005, SIAM Review
+                                            </li>
+                                            <li><a href="http://nlp.stanford.edu/IR-book/pdf/21link.pdf">Link analysis
+                                                for the Web graph</a>, chapter 21 from Introduction to Information
+                                                Retrieval by Manning, Raghavan, and Schutze
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <div align="center"><a href="lectures/09-pagerank.pptx">Lecture 12</a></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                  <td>09/03/2017</td>
+                                  <td>&nbsp;</td>
+                                  <td>Link Analysis and Web search</td>
+                                  <td><p>Chapter 5, <a href="http://mmds.org/#book" target="_blank">Mining Massive
+                                    Datasets</a>, by Jure Leskovec, Anand Rajaraman and Jeff Ullman, Cambridge
+                                    University Press, 2014</p></td>
+                                  <td><div align="center"><a href="lectures/10-hits.pptx">Lecture 13</a></div></td>
+                                </tr>
+                                <tr>
+                                    <td>13/03/2017</td>
+                                    <td>&nbsp;</td>
+                                    <td> Mining Data Streams</td>
+                                    <td>Chapter 4, <a href="http://mmds.org/#book" target="_blank">Mining Massive
+                                        Datasets</a>, by Jure Leskovec, Anand Rajaraman and Jeff Ullman, Cambridge
+                                        University Press, 2014
+                                    </td>
+                                    <td>
+                                        <div align="center"><a href="lectures/streams.pptx">Lecture 14</a></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>16/03/2017</td>
+                                    <td>&nbsp;</td>
+                                    <td>Advertising on the Web</td>
+                                    <td>Chapter 8, <a href="http://mmds.org/#book" target="_blank">Mining Massive
+                                        Datasets</a>, by Jure Leskovec, Anand Rajaraman and Jeff Ullman, Cambridge
+                                        University Press, 2014
+                                    </td>
+                                    <td>
+                                        <div align="center"><a href="lectures/lecture12.pptx">Lecture 15</a></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                  <td>20/03/2017</td>
+                                  <td>&nbsp;</td>
+                                  <td>Learning through Experimentation </td>
+                                  <td><p>Chapter 8, <a href="http://mmds.org/#book" target="_blank">Mining Massive
+                                    Datasets</a>, by Jure Leskovec, Anand Rajaraman and Jeff Ullman, Cambridge
+                                    University Press, 2014</p>
+                                    <p><a href="http://en.wikipedia.org/wiki/Multi-armed_bandit">Multi-armed bandit
+                                      problem (wikipedia)</a></p>
+                                    <p><a href="http://arxiv.org/pdf/1003.0146.pdf">A Contextual-Bandit Approach to
+                                      Personalized News Article Recommendation</a> by Li, Chu, Langford, Schapier.
+                                      WWW 2010.</p>
+                                    <p>&nbsp;</p></td>
+                                  <td><div align="center"><a href="lectures/bandits-lecture.pdf">Lecture 17</a></div></td>
+                                </tr>
+                                <tr>
+                                  <td>23/03/2017</td>
+                                  <td>&nbsp;</td>
+                                  <td>Large-Scale Machine Learning</td>
+                                  <td>Chapter 12, <a href="http://mmds.org/#book" target="_blank">Mining Massive
+                                    Datasets</a>, by Jure Leskovec, Anand Rajaraman and Jeff Ullman, Cambridge
+                                    University Press, 2014 </td>
+                                  <td><div align="center"></div></td>
+                                </tr>
+                                <tr>
+                                  <td>27/03/2017</td>
+                                  <td>&nbsp;</td>
+                                  <td>Mining Social-Network Graphs</td>
+                                  <td>Chapter 10, <a href="http://mmds.org/#book" target="_blank">Mining Massive
+                                    Datasets</a>, by Jure Leskovec, Anand Rajaraman and Jeff Ullman, Cambridge
+                                    University Press, 2014 </td>
+                                  <td>&nbsp;</td>
+                                </tr>
+                                <tr>
+                                  <td height="250">30/03/2017</td>
+                                  <td>&nbsp;</td>
+                                  <td>Knowledge Discovery from Online Social Networks</td>
+                                  <td><p><strong>&quot;<a href="http://linc.ucy.ac.cy/publications/pdfs/efstathiades_ieeebigdata2016.pdf" target="_blank">Online Social Network Evolution: Revisiting the Twitter Graph.</a>&quot;</strong>, Hariton Efstathiades, Demetris Antoniades, George Pallis, Marios D. Dikaiakos, Zoltán Szlávik, Robert-Jan Sips, <strong>&quot;2016 IEEE International Conference on Big Data&quot;</strong> (<strong>IEEE BigData 2016</strong>), Washington, DC, USA <strong>2016</strong>.</p>
+                                    <p><em>Optional Reading</em>:</p>
+                                    <ul>
+                                      <li><a href="http://www.economist.com/node/16910031">Mining social networks:
+                                        Untangling the social web</a>, Economist, 2010. </li>
+                                      <li><a href="http://videolectures.net/single_leskovec_social/">Tutorial on
+                                        Social Media Analytics</a>,  <em>ACM SIGKDD International Conference on
+                                          Knowledge Discovery and Data Mining<em>, 2011</em></em></li>
+                                    </ul></td>
+                                  <td><div align="center"></div></td>
+                                </tr>
+                                <tr>
+                                    <td>03/04/2017</td>
+                                    <td>&nbsp;</td>
+                                    <td>Use case: Sampling and filtering on IoT Devices</td>
+                                    <td> &quot;<a href="http://linc.ucy.ac.cy/publications/pdfs/AdaM_final.pdf" target="_blank">AdaM: an Adaptive Monitoring Framework for Sampling and Filtering on IoT Devices</a>&quot;, D. Trihinas and G. Pallis and M. D. Dikaiakos, &quot;2015 IEEE International Conference on Big Data&quot; (IEEE BigData 2015), Santa Clara, CA, USA 2015.</td>
+                                    <td>
+                                        <div align="center"><a href="lectures/adam.pptx">Lecture 16</a></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>06/04/2017</td>
+                                    <td>&nbsp;</td>
+                                    <td>Sentiment Analysis</td>
+                                    <td><p>The material of this lecture are taken from the course <a href="http://web.stanford.edu/class/cs124/#"> From Languages to Information</a></p>
+                                  <p>&nbsp;</p></td>
+                                    <td>
+                                        <div align="center"><a href="lectures/sentiment.pdf">Lecture 19</a></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>24/04/2016</td>
+                                    <td>&nbsp;</td>
+                                    <td>Projects Presentation</td>
+                                    <td>&nbsp;</td>
+                                    <td>
+                                        <div align="center"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>27/04/2016</td>
+                                    <td>&nbsp;</td>
+                                    <td>Projects Presentation</td>
+                                    <td>&nbsp;</td>
+                                    <td>
+                                        <div align="center"></div>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+
+
+                                    <td colspan="5">&nbsp;</td>
+
+
+                                </tr>
+
+
+                            </table>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="clearer">&nbsp;</div>
+
+
+    </div>
+
+
+    <div id="footer">
+
+
+        <div class="left" id="footer-left"><img src="images/logo-small.gif" alt="" class="left"/>
+
+
+            <p>Spring Semester 2017 | Data Mining on the Web</p>
+
+            <p class="quiet"><a href="http://www.cs.ucy.ac.cy" target="_blank">Computer Science</a> | <a
+                    href="http://www.ucy.ac.cy" target="_blank">University of Cyprus</a></p>
+
+
+            <div class="clearer">&nbsp;</div>
+
+
+        </div>
+
+
+        <div class="right" id="footer-right">
+
+
+            <p class="large"><a href="index.html">Home</a> <span class="text-separator">|</span> <a
+                    href="announcements.html">News</a> <span class="text-separator">|</span> <a href="lectures.html">Lectures</a>
+                <span class="text-separator">|</span> <a href="labs.html">Labs</a> <span class="text-separator">|</span>
+                <a href="exercises.html">Assignments</a> <span class="text-separator">|</span> <a href="resources.html">Resources</a>
+            </p>
+
+
+        </div>
+
+
+        <div class="clearer">&nbsp;</div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+
+</html>

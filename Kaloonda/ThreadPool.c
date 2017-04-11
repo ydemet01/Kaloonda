@@ -8,6 +8,8 @@
 
 #include "ThreadPool.h"
 
+THREADPOOL *threadpool;
+
 int enqueue (THREADPOOL *q, THREAD_NODE *node) {
 
     node->next = NULL;
@@ -36,7 +38,7 @@ int dequeue(THREADPOOL *q, THREAD_NODE **retval){
     p = q->head;
     *retval=q->head;
     q->head = q->head->next;
-    free(p);
+//    free(p);
     --(q->length);
 
     if (q->length == 0) {
@@ -61,22 +63,24 @@ int initTHREADPOOL(THREADPOOL **threadpool) {
     return EXIT_SUCCESS;
 }
 
-int threadpoolInit(int threads){
+int threadpoolInit(unsigned long threads){
 
     threadpool=NULL;
     initTHREADPOOL(&threadpool);
-    int i=0, err;
+    int err;
+    unsigned long i=0;
     for (i=0;i<threads;i++) {
         THREAD_NODE *node= (THREAD_NODE*)malloc(sizeof(THREAD_NODE));
         if (node == NULL) {
             return EXIT_FAILURE; // EXIT_CODE_OUT_OF_MEMORY
         }
         pthread_mutex_init(&(node->nodemutex),NULL);
-        if ((err = pthread_mutex_lock(&(node->nodemutex)))) {
-            /* lock Mutex */
-            //perror2(pthread_mutex_lock);
-            return EXIT_FAILURE;//EXIT_CODE_MUTEX_FAIL
-        }
+//        if ((err = pthread_mutex_lock(&(node->nodemutex)))) {
+//            /* lock Mutex */
+//            //perror2(pthread_mutex_lock);
+//            return EXIT_FAILURE;//EXIT_CODE_MUTEX_FAIL
+//        }
+        pthread_cond_init(&(node->cond), NULL);
         pthread_t p;
         if ((err = pthread_create(&p, NULL, threadFunction, (void *) node))) {
 //            perror2("pthread_create", err);
@@ -88,6 +92,10 @@ int threadpoolInit(int threads){
     
     
     return EXIT_SUCCESS;
+}
+
+void returnThreadpool(THREADPOOL **ret){
+    *ret=threadpool;
 }
 
 

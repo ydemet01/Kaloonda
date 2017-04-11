@@ -1,0 +1,493 @@
+﻿<?php session_start(); ?>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+
+
+<head>
+
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+
+    <meta name="description" content=""/>
+
+
+    <meta name="keywords" content=""/>
+
+
+    <meta name="author" content=""/>
+
+
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
+
+
+    <title>EPL451 - Data Mining on the Web</title>
+
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
+
+    <script type="text/javascript" src="js/login.js"></script>
+
+
+</head>
+
+
+<body>
+
+
+<div id="site-wrapper">
+
+
+    <div id="header">
+
+
+        <div id="top">
+
+
+            <div class="left" id="logo"><a href="index.html"><img src="images/logo.png" alt=""/></a></div>
+
+
+            <div class="left navigation" id="main-nav">
+
+
+                <ul class="tabbed">
+
+
+                    <li><a href="index.html">Home</a></li>
+
+
+                    <li><a href="announcements.html">Anouncements</a></li>
+
+
+                    <li><a href="lectures.html">Schedule</a></li>
+
+
+                    <li><a href="labs.html">Labs</a></li>
+
+
+                    <li><a href="exercises.html">Assignments</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+
+
+                </ul>
+
+
+                <div class="clearer">&nbsp;</div>
+
+
+            </div>
+
+
+            <div class="clearer">&nbsp;</div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="main" id="main-two-columns">
+
+
+        <div class="left" id="main-content">
+
+
+            <div class="section">
+
+
+                <div class="section-content">
+
+
+                    <div class="post">
+
+
+                        <div class="post-title">
+
+
+                            <h2 class="label label-orange">Welcome to Website EPL 451 - Data Mining on the Web</h2>
+
+
+                        </div>
+
+
+                        <div class="post-date">Monday, 16 January 2017</div>
+
+
+                        <div class="post-body">
+
+
+                            <p>Data mining on the Web refers to the automatic discovery of interesting and useful
+                                patterns from the
+                                data
+                                associated with the usage, content, and the linkage structure of Web resources. It has
+                                quickly
+                                become one of
+                                the most popular areas in computing and information systems because of its direct
+                                applications in
+                                e-commerce, information retrieval/filtering, Web personalization, and recommender
+                                systems. The
+                                primary focus
+                                of this course is on examining techniques from data mining to extract useful knowledge
+                                from Web
+                                data. This
+                                course will be focused on a detailed overview of the data mining process and techniques,
+                                specifically those
+                                that are most relevant to Web mining. Several topics will be covered such as Web data
+                                clustering,
+                                classification, association rules, link analysis, social networks and Web
+                                advertising.</p>
+
+                            <p><strong>Basic prerequisites are:</strong> EPL 231: Data structures and Algorithms,
+                                EPL342: Databases.
+                                A good
+                                knowledge of the Java programming language will be helpful with programming assignments.
+                            </p>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="content-separator"></div>
+
+
+                    <div class="post">
+
+
+                        <div class="post-title">
+
+
+                            <h2 class="label label-orange">Course Contract </h2>
+
+
+                        </div>
+
+
+                        <div class="post-body">Course Contract <a href="contract.pdf" target="_blank">download
+                            (.pdf)</a></div>
+
+
+                    </div>
+
+
+                    <div class="content-separator"></div>
+
+
+                    <div class="post">
+
+
+                        <div class="post-title">
+
+
+                            <h2>Administrative Information</h2>
+                        </div>
+
+
+                        <div class="post-body">
+
+
+                            <table width="100%" cellpadding="0" cellspacing="0">
+
+
+                                <tr>
+
+
+                                    <td width="21%">Instructor:</td>
+
+
+                                    <td width="79%"><a href="http://www.cs.ucy.ac.cy/~gpallis/" target="_blank">George
+                                        Pallis</a>
+                                    </td>
+
+
+                                </tr>
+
+
+                                <tr>
+
+
+                                    <td>Tel:</td>
+
+
+                                    <td>+357 22 89 27 43</td>
+
+
+                                </tr>
+
+
+                                <tr>
+
+
+                                    <td>Office:</td>
+
+
+                                    <td>ΘΕΕ01 - Β119</td>
+
+
+                                </tr>
+
+
+                                <tr>
+
+
+                                    <td>E-mail:</td>
+
+
+                                    <td>gpallis-AT-cs.ucy.ac.cy</td>
+
+
+                                </tr>
+
+
+                                <tr>
+
+
+                                    <td>Office hours:</td>
+
+
+                                    <td>Wednesday, 15:00-17:00, or by appointment</td>
+
+
+                                </tr>
+
+
+                                <tr>
+
+
+                                    <td>Lectures:</td>
+
+
+                                    <td>Monday/Thursday: 16:30-18:00, Room 147, Pure &amp; Applied Sciences Bldg. I</td>
+
+
+                                </tr>
+
+
+                                <tr>
+
+
+                                    <td>Labs &amp; Tutorials:</td>
+
+
+                                    <td>Lab: Wednesday: 18:00-20:00, Room 101, Pure &amp; Applied Sciences Bldg. I / Tutorial: Thursday: 17:45-18:45, Room 147, Pure &amp; Applied Sciences Bldg. I</td>
+
+
+                                </tr>
+
+
+                                <tr>
+
+
+                                    <td>Teaching Assistant:</td>
+
+
+                                    <td><p>Pavlos Antoniou<br/>
+
+
+                                        Email:  paul.antoniou-AT-cs.ucy.ac.cy<br/>
+                                        Office:  SOED B210 (new campus)<br/>
+                                        Office hours: </p>
+
+
+                                    </td>
+
+
+                                </tr>
+
+
+                            </table>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="clearer">&nbsp;</div>
+
+
+        </div>
+
+
+        <div class="right sidebar" id="sidebar">
+
+
+            <div class="section">
+
+
+                <div class="section-title">Last Assignments</div>
+
+
+                <div class="section-content">
+
+
+                    <ul class="nice-list">
+
+
+                        <li>
+                            <div class="left"><p>&nbsp;</p>
+                            </div>
+                        </li>
+
+
+                        <li>
+                            <div class="right"></div>
+
+
+                            <div class="clearer">&nbsp;</div>
+
+
+                        </li>
+
+
+                        <li>
+
+                            <div class="clearer"></div>
+
+
+                        </li>
+
+
+                    </ul>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="section">
+
+
+                <div class="section-title">Last Announcements</div>
+
+
+                <div class="section-content">
+
+
+                    <ul class="nice-list">
+
+
+                        <li></li>
+                        <li>
+
+
+                            <div class="clearer">&nbsp;</div>
+
+
+                        </li>
+
+
+                    </ul>
+
+
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-content">
+                    <ul class="nice-list">
+                        <li>
+
+
+                            <div class="clearer">&nbsp;</div>
+
+
+                        </li>
+
+                        <li>
+
+
+                            <div class="center"><img src="images/book.jpg" width="100" height="130"
+                                                     style="float:left;margin-right:5px;"/><a
+                                    href="http://mmds.org/#ver21"
+                                    target="_blank">Mining Massive Datasets</a>, Cambridge University Press, 2014.
+                            </div>
+
+                            <div class="right"></div>
+
+                            <div class="clearer">&nbsp;</div>
+
+
+                        </li>
+
+
+                    </ul>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="clearer">&nbsp;</div>
+
+
+    </div>
+
+
+    <div id="footer">
+
+
+        <div class="left" id="footer-left">
+            <img src="images/logo-small.gif" alt="" class="left"/>
+
+            <p>Spring Semester 2017 | Data Mining on the Web</p>
+
+
+            <p class="quiet"><a href="http://www.cs.ucy.ac.cy" target="_blank">Computer Science</a> | <a
+                    href="http://www.ucy.ac.cy" target="_blank">University of Cyprus</a></p>
+
+
+            <div class="clearer">&nbsp;</div>
+
+
+        </div>
+
+        <div class="right" id="footer-right">
+
+
+            <p class="large"><a href="index.html">Home</a> <span class="text-separator">|</span> <a
+                    href="announcements.html">News</a> <span class="text-separator">|</span> <a
+                    href="lectures.html">Lectures</a> <span class="text-separator">|</span> <a href="labs.html">Labs</a>
+                <span class="text-separator">|</span> <a href="exercises.html">Assignments</a> <span
+                        class="text-separator">|</span>
+                <a href="resources.html">Resources</a></p>
+
+
+        </div>
+
+
+        <div class="clearer">&nbsp;</div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+
+</html>

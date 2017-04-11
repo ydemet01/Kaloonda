@@ -21,7 +21,8 @@
 #include "signals.h"
 #include "ThreadPool.h"
 
-THREADPOOL *threadpool;
+//THREADPOOL *threadpool;
 int webserverInit(int port);
+int socketEstablishment(int port);
 
 #endif /* connection_h */

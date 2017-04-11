@@ -14,7 +14,7 @@
 #include <errno.h>
 #include <string.h>
 #include "signals.h"
-//#include "connection.h"
-//#include "httprequest.h"
+#include "connection.h"
+#include "httprequest.h"
 
 #endif /* main_h */

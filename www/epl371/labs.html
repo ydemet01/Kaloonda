@@ -1,0 +1,487 @@
+﻿<?php session_start(); ?>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+
+<head>
+
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+
+    <meta name="description" content=""/>
+
+
+    <meta name="keywords" content=""/>
+
+
+    <meta name="author" content=""/>
+
+
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
+
+    <title>EPL451 - Data Mining on the Web</title>
+
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
+
+    <script type="text/javascript" src="js/login.js"></script>
+
+</head>
+
+
+<body>
+
+
+<div id="site-wrapper">
+
+
+    <div id="header">
+
+
+        <div id="top">
+
+
+            <div class="left" id="logo"><a href="index.html"><img src="images/logo.png" alt=""/></a></div>
+
+
+            <div class="left navigation" id="main-nav">
+
+
+                <ul class="tabbed">
+
+
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="announcements.html">Anouncements</a></li>
+                    <li><a href="lectures.html">Schedule</a></li>
+                    <li><a href="labs.html">Labs</a></li>
+                    <li><a href="exercises.html">Assignments</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+
+
+                </ul>
+
+
+                <div class="clearer">&nbsp;</div>
+
+
+            </div>
+
+
+            <div class="clearer">&nbsp;</div>
+
+
+        </div>
+
+
+    </div>
+
+    <div class="main" id="main-one-column">
+
+
+        <div class="left" id="main-content">
+
+
+            <div class="section">
+
+
+                <div class="section-content">
+
+
+                    <div class="post">
+
+
+                        <div class="post-title">
+
+
+                            <h2 class="label label-orange">Labs</h2>
+
+
+                        </div>
+
+
+                        <div class="post-date"></div>
+
+
+                        <div class="post-body">
+                            <p><strong>Installing and configuring all the software needed for this course on your machine might be tedious. We have prepared a virtual machine (VM) with the majority of tools which you can download and use it. You can download the machine from <a href="labs/vms/UbuntuCS.zip">here</a> (size: ~7.46GB). The username/password is csdeptucy.</strong></p>
+                            <p><strong>We would like to kindly ask you to bring your own laptop (with VM installed on it) in the lab.<strong></p>
+							<p>The schedule shown below is tentative and subject to change.</p>
+                            <table class="taskTable" cellspacing="0" cellpadding="0">
+
+
+                                <tr>
+
+
+                                    <td width="5%" align="center"><strong>Week</strong></td>
+
+                                    <td width="30%" align="center"><strong>Description</strong></td>
+									
+									<td width="40%" align="center"><strong>Useful Links</strong></td>
+
+                                    <td colspan="15%" align="center"><strong>Material</strong></td>
+
+
+                                </tr>
+
+
+                                <tr>
+
+
+                                    <td>2</td>
+
+
+                                    <td>Introduction to Apache Hadoop</td>
+
+
+                                    <td>
+                                        <ul>
+                                            <li><a href="http://www.cs.ucy.ac.cy/courses/EPL451/lectures/Hadoop.pdf">Getting Started with Hadoop</a></li>
+                                            <li><a href="http://hadoop.apache.org/">http://hadoop.apache.org/</a></li>
+                                            <li><a href="http://cacm.acm.org/magazines/2013/1/158759-beyond-hadoop/fulltext">Beyond Hadoop</a></li>
+                                            <li><a href="http://www.datameer.com/blog/uncategorized/the-hadoop-ecosystem-visualized-in-datameer.html">Hadoop Ecosystem</a></li>
+                                        </ul>
+                                    </td>
+
+
+                                    <td>
+                                        <p><a href="labs/LAB01/LAB01.pdf" target="_blank">Lab01.pdf</a></p>
+                                        <p><a href="labs/LAB01/Hadoop_1.zip">Source Code</a><br/><a href="labs/LAB01/dataset.zip">Dataset</a></p>
+                                    </td>
+
+                                    <td width="4">&nbsp;</td>
+
+
+                                </tr>
+
+
+                                <tr>
+
+
+                                    <td>3</td>
+
+
+                                    <td>Programming with Apache Hadoop</td>
+
+                                    <td>&nbsp;</td>
+
+                                    <td>
+                                        <p><a href="labs/LAB02/LAB02.pdf" target="_blank">Lab02.pdf</a></p>
+                                        <p><a href="labs/LAB02/WordCount.java">Source code to build your solution</a><br/>
+										<a href="labs/LAB02/Hadoop_2_sol.zip">Solution</a></p>
+                                    </td>
+
+                                    <td>&nbsp;</td>
+
+
+                                </tr>
+
+
+                                <tr>
+
+
+                                    <td>4</td>
+
+
+                                    <td>Programming with Apache Hadoop</td>
+
+                                    <td>&nbsp;</td>
+
+                                    <td>
+                                        <p>
+                                            <a href="labs/LAB03/LAB03.pdf" target="_blank">Lab03.pdf</a>
+                                        </p>
+
+                                        <p>
+                                            <a href="labs/LAB03/Hadoop_3.zip">Source code to build your solution</a><br/>
+                                            <a href="labs/LAB01/dataset.zip">Dataset</a>
+                                        </p>
+                                    </td>
+
+                                    <td><br/></td>
+
+                                </tr>
+								
+								<tr>
+
+
+                                    <td>5</td>
+
+
+                                    <td>Introduction to Python<br/>Implementation of Similarity/Distance Measures</td>
+
+                                    <td>&nbsp;</td>
+
+                                    <td>
+                                        <a href="labs/LAB04/LAB04.pdf" target="_blank">Lab04.pdf</a>,<br/>
+                                        <a href="labs/LAB04/Lab4.py" target="_blank">Lab4.py</a>,<br/>
+										<a href="labs/LAB04/Lab4.csv" target="_blank">Dataset</a>,<br/>
+										<a href="labs/LAB04/Lab4-solution.py" target="_blank">Lab4-solution.py</a>
+                                    </td>
+
+                                    <td>&nbsp;</td>
+
+
+                                </tr>
+								
+								<tr>
+
+
+                                    <td>6</td>
+
+
+                                    <td>Classification and Clustering in Python</td>
+
+                                    <td>
+										<ul>
+                                            <li><a href="labs/LAB05/Pandas DataFrame Notes.pdf">Pandas DataFrame Notes</a></li>
+											<li><a href="labs/LAB05/Quandl+-+Pandas,+SciPy,+NumPy+Cheat+Sheet.pdf">Pandas,SciPy,NumPy Cheat Sheet</a></li>
+										</ul>
+									</td>
+
+                                    <td>
+                                        <a href="labs/LAB05/LAB05.pdf" target="_blank">Lab05.pdf</a>,<br/>
+                                        <a href="labs/LAB05/iris_data.csv" target="_blank">iris_data.csv</a>,<br/>
+										<a href="labs/LAB05/fleet_data.csv" target="_blank">fleet_data.csv</a>,<br/>
+										<a href="labs/LAB05/wine_data.csv" target="_blank">wine_data.csv</a>,<br/>
+										<a href="labs/LAB05/LAB05_Classification-Task1.py" target="_blank">LAB05_Classification-Task1.py</a>,<br/>
+										<a href="labs/LAB05/LAB05_Classification-Task1-solution.py" target="_blank">LAB05_Classification-Task1-solution.py</a>,<br/>
+										<a href="labs/LAB05/LAB05_Clustering.py" target="_blank">LAB05_Clustering.py</a>,<br/>
+										<a href="labs/LAB05/Task2-solution.py" target="_blank">Task2-solution.py</a>
+                                    </td>
+
+                                    <td>&nbsp;</td>
+
+
+                                </tr>
+                                <tr>
+
+
+                                    <td>7</td>
+
+                                    <td>Getting Started with <a href="http://mahout.apache.org/">Apache Mahout</a><br/>Item-based and User-based Recommendation</td>
+
+                                    <td>&nbsp;</td>
+
+                                    <td>
+                                        <a href="labs/LAB06/LAB06.pdf" target="_blank">Lab06</a><br/>
+                                        <a href="labs/LAB06/ml-1m.zip" target="_blank">ml-1m.zip</a><br/>
+										<a href="labs/LAB06/LAB06.zip" target="_blank">LAB06.zip</a>
+                                    </td>
+
+                                    <td>&nbsp;</td>
+
+
+                                </tr>
+
+								
+                                <tr>
+
+                                    <td>8</td>
+
+
+                                    <td>Introduction to <a href="http://spark.apache.org/">Apache Spark</a></td>
+
+                                    <td>&nbsp;</td>
+
+                                    <td>
+										<a href="labs/LAB07/LAB07.pdf" target="_blank">Lab07</a><br/>
+										<a href="labs/LAB07/kmeans-example.py" target="_blank">kmeans-example.py</a><br/>
+										<a href="labs/LAB07/kmeans-fleet.py" target="_blank">kmeans-fleet.py</a>
+									</td>
+
+                                    <td>&nbsp;</td>
+
+                                </tr>
+
+
+                                <tr>
+
+
+                                    <td>9</td>
+
+
+                                    <td>Text Clustering and Classification in Python</td>
+
+                                    <td>&nbsp;</td>
+
+                                    <td>
+                                        <a href="labs/LAB08/LAB08.pdf" target="_blank">Lab08</a><br/>
+                                        <a href="labs/LAB08/Lab8-description.pdf" target="_blank">Lab8-description.pdf</a><br/>
+                                        <a href="labs/LAB08/labeledTrainData.tsv" target="_blank">labeledTrainData.tsv</a>
+                                    </td>
+
+                                    <td>&nbsp;</td>
+
+
+                                </tr>
+								
+								<tr>
+
+
+                                    <td>10</td>
+
+                                    <td>Text Clustering in Apache Mahout (Java)</td>
+
+                                    <td>
+										<ul>
+											<li>Using kMeans</li>
+										</ul>
+									</td>
+
+                                    <td><a href="labs/LAB09/LAB09.pdf" target="_blank">Lab09</a><br/>
+                                        <a href="labs/LAB09/LAB09.zip" target="_blank">Source Code</a><br/>
+										<!--<a href="labs/LAB09/LAB09_Sol.zip" target="_blank">Solution</a><br/>-->
+                                        <a href="labs/LAB09/reuters21578.tar.gz" target="_blank">reuters21578.tar.gz</a>
+                                    </td>
+
+                                    <td>&nbsp;</td>
+
+
+                                </tr>
+
+<!--
+
+                                <tr>
+
+
+                                    <td>9</td>
+
+                                    <td>Introduction to Mahout Recommender</td>
+
+                                    <td>&nbsp;</td>
+
+                                    <td><a href="labs/LAB08/LAB08.pdf" target="_blank">Lab08</a><br/><br/>
+                                        <a href="labs/LAB08/LAB08.zip" target="_blank">Source Code</a>
+                                    </td>
+
+                                    <td>&nbsp;</td>
+
+                                </tr>
+
+
+                                <tr>
+
+
+                                    <td>10</td>
+
+                                    <td>Dimensionality Reduction</td>
+
+                                    <td>&nbsp;</td>
+
+                                    <td><a href="labs/LAB09/LAB09.pdf" target="_blank">Lab09</a><br/><br/>
+                                        <a href="labs/LAB09/lastfmVectors.zip" target="_blank">Data</a>
+                                    </td>
+
+                                    <td>&nbsp;</td>
+
+
+                                </tr>
+
+
+                                <tr>
+                                    <td>11</td>
+
+                                    <td>Recommendation with mahout</td>
+
+                                    <td>
+                                        <ul>
+                                            <li><a href="http://commons.apache.org/proper/commons-csv/">Using Commons CSV</a></li>
+                                            <li><a href="https://builds.apache.org/job/mahout-quality/javadoc/org/apache/mahout/cf/taste/impl/model/MemoryIDMigrator.html">Understand why MemoryIDMigratorclass is important</a></li>
+                                        </ul>
+                                    </td>
+                                    </td>
+
+                                    <td>
+                                        <a href="labs/LAB10/LAB10.pdf" target="_blank">Lab10</a><br/><br/>
+                                        <a href="labs/LAB10/Personalization.zip" target="_blank">Source Code</a>
+                                    </td>
+
+                                    <td>&nbsp;</td>
+                                </tr>
+								
+                                <tr>
+                                
+                                    <td>12</td>
+
+                                    <td>Timeseries Clustering & Classification</td>
+                                    
+                                    <td>
+                                      <a href="labs/LAB11/DTW.pdf" target="_blank">Dynamic Time Warping</a>
+                                    </td>
+                                    
+                                    <td>
+                                      <a href="labs/LAB11/LAB11.pdf" target="_blank">Lab11</a><br/>
+                                      <a href="labs/LAB11/timeseries.zip" target="_blank">Source Code</a>
+                                    </td>
+                                    
+                                    <td>&nbsp;</td>
+                                </tr>
+
+                                <tr>
+
+                                    <td>13</td>
+
+                                    <td>No Lab</td>
+
+                                    <td>&nbsp;</td>
+
+                                    <td>&nbsp;</td>
+
+                                    <td>&nbsp;</td>
+
+
+                                </tr>
+								-->
+                                </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="clearer">&nbsp;</div>
+
+
+    </div>
+
+
+    <div id="footer">
+
+
+        <div class="left" id="footer-left"><img src="images/logo-small.gif" alt="" class="left"/>
+
+
+            <p>Spring Semester 2017 | Data Mining on the Web</p>
+
+            <p class="quiet"><a href="http://www.cs.ucy.ac.cy" target="_blank">Computer Science</a> | <a
+                    href="http://www.ucy.ac.cy" target="_blank">University of Cyprus</a></p>
+
+            <div class="clearer">&nbsp;</div>
+
+
+        </div>
+    <span class="large"><a href="index.html">Home</a> <span class="text-separator">|</span> <a
+            href="announcements.html">News</a> <span class="text-separator">|</span> <a
+            href="lectures.html">Lectures</a> <span
+            class="text-separator">|</span> <a href="labs.html">Labs</a> <span class="text-separator">|</span> <a
+            href="exercises.html">Assignments</a> <span class="text-separator">|</span> <a href="resources.html">Resources</a></span>
+
+        <div class="clearer">&nbsp;</div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

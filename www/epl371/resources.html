@@ -1,0 +1,537 @@
+<?php session_start(); ?>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+
+
+<head>
+
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+
+    <meta name="description" content=""/>
+
+
+    <meta name="keywords" content=""/>
+
+
+    <meta name="author" content=""/>
+
+
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
+
+
+    <title>EPL451 - Data Mining on the Web</title>
+
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
+
+    <script type="text/javascript" src="js/login.js"></script>
+
+
+</head>
+
+
+<body>
+
+
+<div id="site-wrapper">
+
+
+    <div id="header">
+
+
+        <div id="top">
+
+
+            <div class="left" id="logo"><a href="index.html"><img src="images/logo.png" alt=""/></a></div>
+
+
+            <div class="left navigation" id="main-nav">
+
+
+                <ul class="tabbed">
+
+
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="announcements.html">Anouncements</a></li>
+                    <li><a href="lectures.html">Schedule</a></li>
+                    <li><a href="labs.html">Labs</a></li>
+                    <li><a href="exercises.html">Assignments</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+
+
+                </ul>
+
+
+                <div class="clearer">&nbsp;</div>
+
+
+            </div>
+
+
+            <div class="clearer">&nbsp;</div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="main" id="main-one-column">
+
+
+        <div class="left" id="main-content">
+
+
+            <div class="section">
+
+
+                <div class="section-content">
+
+
+                    <div class="post">
+
+
+                        <div class="post-title">
+
+
+                            <h2 class="label label-orange">Resources</h2>
+
+
+                        </div>
+
+
+                        <div class="post-date"></div>
+
+
+                        <div class="post-body">
+
+
+                            <!--
+
+
+
+
+
+
+
+                            <div class="content-separator"> </div>
+
+
+
+
+
+
+
+                               <p><b>01/11/2012</b>: Έχει αναρτηθεί η <a href="exercises.html">άσκηση 5</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                               <div class="content-separator"> </div>
+
+
+
+
+
+
+
+                               <p><b>24/10/2012</b>: Οι βαθμολογίες του μαθήματος θα αναρτούνται μέσω του<a href="http://www.adaptiveweb.net/raus" target="_blank"> συστήματος βαθμολογιών</a>. Για οποιοδήποτε πρόβλημα σύνδεσης επικοινωνήστε με τον κ. Μάριο Μπελκ στο belk-at-cs.ucy.ac.cy</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                       <div class="content-separator"> </div>
+
+
+
+
+
+
+
+                               <p><b>22/10/2012</b>: Έχει αναρτηθεί η <a href="exercises.html">άσκηση 4</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                               <div class="content-separator"> </div>
+
+
+
+
+
+
+
+                               <p><b>11/10/2012</b>: Η ενδιάμεση εξέταση θα γίνει στην αίθουσα ΧΩΔ-Β205 στις 15/10/2012 και ώρα 13:30-15:00. Οι φοιτητές πρέπει να βρίσκονται στην αίθουσα 20 λεπτά πριν την έναρξη της εξέτασης.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                 <div class="content-separator"> </div>
+
+
+
+
+
+
+
+                               <p><b>08/10/2012</b>: Έχει αναρτηθεί η <a href="exercises.html">άσκηση 3</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                 <div class="content-separator"> </div>
+
+
+
+
+
+
+
+                               <p><b>02/10/2012</b>: Στο φροντιστήριο στις 03/10/2012 θα γίνει αναπλήρωση του εργαστηρίου 4 για την ομάδα Α (Δευτέρα).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                 <div class="content-separator"> </div>
+
+
+
+
+
+
+
+                               <p><b>24/09/2012</b>: Έχει αναρτηθεί η <a href="exercises.html">άσκηση 2</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                               -->
+
+
+                            <div class="content-separator"></div>
+
+
+                            <h4>Main Textbook</h4>
+                            <ul>
+                                <li><a href="http://mmds.org/#book" target="_blank">Mining Massive Datasets</a>, by
+                                    Jure, Leskovec, Anand Rajaraman and Jeff Ullman, Cambridge University Press,
+                                    2014. <em>The main textbook of this course.  </em><em>You can download it free from <a
+                                            href="http://mmds.org/#book">here</a>.</em></li>
+                            </ul>
+                            <h4>Coursera</h4>
+                            <ul>
+                                <li><a href="https://www.coursera.org/course/mmds">Minining Massive Data sets</a>,
+                                    Stanford University
+                                </li>
+                            </ul>
+                            <p><strong>Articles</strong></p>
+                            <ul>
+                                <li>Feng Li, Beng Chin Ooi, M. Tamer Özsu, and Sai Wu. 2014.<a
+                                        href="http://dl.acm.org/citation.cfm?id=2503009&amp;CFID=410256995&amp;CFTOKEN=59159248">
+                                    Distributed data management using MapReduce</a>. <em>ACM Comput. Surv.</em> 46, 3,
+                                    Article 31 (January 2014), 42 pages.
+                                </li>
+                                <li>Gregory Mone. 2013. <a
+                                        href="http://cacm.acm.org/magazines/2013/1/158759-beyond-hadoop/fulltext">Beyond
+                                    Hadoop</a>. <em>Commun. ACM</em> 56, 1 (January 2013), 22-24. 
+                                </li>
+                                <li>A. Anderson, D. Huttenlocher, J. Kleinberg, J. Leskovec. <a
+                                        href="http://www.cs.cornell.edu/home/kleinber/wsdm12-sim.pdf">Effects of User
+                                    Similarity in Social Media.</a> Proc. 5th ACM Symposium on Web Search and Data
+                                    Mining, 2012.
+                                </li>
+                                <li>J. Tang, T. Lou, J. Kleinberg. <a
+                                        href="http://www.cs.cornell.edu/home/kleinber/wsdm12-links.pdf">Inferring Social
+                                    Ties across Heterogenous Networks.</a> Proc. 5th ACM Symposium on Web Search and
+                                    Data Mining, 2012.
+                                </li>
+                                <li>M. Stonebraker. <a
+                                        href="http://cacm.acm.org/blogs/blog-cacm/155468-what-does-big-data-mean/fulltext">What
+                                    Does Big Data Mean?</a>, September 2012
+                                </li>
+                                <li>E. Adar, J. Teevan, S.T. Dumais and J. L. Elsas. <a
+                                        href="http://doi.acm.org/10.1145/1498759.1498837">The Web Changes Everything: 
+                                    Understanding the Dynamics of Web Content</a>,  Intern. Conf. on Web Search and Data
+                                    Mining (WSDM), ACM,  2009
+                                </li>
+                            </ul>
+                            <h4>Useful Textbooks</h4>
+                            <ul>
+                                <li> Mohammed Zaki and Wagner Meira Jr. Data Mining and Analysis: Fundamental Concepts
+                                    and Algorithms. This book will be <a
+                                            href="http://www.cambridge.org/us/academic/subjects/computer-science/knowledge-management-databases-and-data-mining/data-mining-and-analysis-fundamental-concepts-and-algorithms"
+                                            title="http://www.cambridge.org/us/academic/subjects/computer-science/knowledge-management-databases-and-data-mining/data-mining-and-analysis-fundamental-concepts-and-algorithms"
+                                            rel="nofollow">published</a> by <a href="http://www.cambridge.org/"
+                                                                               title="http://www.cambridge.org/"
+                                                                               rel="nofollow">Cambridge University
+                                        Press</a> in 2014. <em>You can download it free from <a
+                                            href="http://www2.dcc.ufmg.br/livros/miningalgorithms/files/pdf/dmafca.pdf">here</a>.</em>
+                                </li>
+                                <li><a href="https://github.com/jakevdp/PythonDataScienceHandbook">Python Data Science Handbook</a>, Jake VanderPlas, O'reilly, 2016</li>
+                                <li>Ian H. Witten, Eibe Frank, Mark A. Hall: <a
+                                        href="http://www.cs.waikato.ac.nz/ml/weka/book.html">Data Mining: Practical
+                                    Machine Learning Tools and Techniques</a> (Third Edition), Morgan Kaufmann,January
+                                    2011
+                                </li>
+                                <li><a href="http://www.manning.com/owen/" rel="nofollow">Mahout in Action</a> - Book by
+                                    Sean Owen and Robin Anil, published by Manning Publications, 2011.
+                                </li>
+                                <li><a href="http://oreilly.com/catalog/9781449389734/">Hadoop: The Definitive Guide,
+                                    Second Edition</a> is a book about <a href="http://hadoop.apache.org/">Apache
+                                    Hadoop</a> by <a href="http://www.oreillynet.com/pub/au/1271">Tom White</a>,
+                                    published by O'Reilly Media.
+                                </li>
+                                <li><a href="http://www-csli.stanford.edu/~hinrich/information-retrieval-book.html"
+                                       target="_blank">Introduction to Information Retrieval</a>, by Christopher D.
+                                    Manning, Prabhakar Raghavan &amp; Hinrich Schütze, Cambridge University Press, 2008.
+                                </li>
+                                <li>
+                                    <a href="http://www.cs.cornell.edu/home/llee/opinion-mining-sentiment-analysis-survey.html"
+                                       title="http://www.cs.cornell.edu/home/llee/opinion-mining-sentiment-analysis-survey.html"
+                                       rel="nofollow">Opinion mining and sentiment analysis</a>, by Bo Pang and Lillian
+                                    Lee, in <em>Foundations and Trends in Information Retrieval 2(1-2), pp. 1–135,
+                                    2008</em>. Also available as a book or e-book.
+                                </li>
+                                <li>D. Easley, J. Kleinberg. <a
+                                        href="http://www.cs.cornell.edu/home/kleinber/networks-book/">Networks, Crowds,
+                                    and Markets: Reasoning About a Highly Connected World.</a> Cambridge University
+                                    Press, 2010.
+                                </li>
+                                <li><a href="http://www.mir2ed.org/" target="_blank">Modern Information Retrieval.</a> R.
+                                    Baeza-Yates, B. Ribeiro-Neto. Addison-Wesley, 2011.
+                                </li>
+                                <li><a href="http://www.morganclaypool.com/doi/abs/10.2200/S00298ED1V01Y201009DMK003">Community
+                                    Detection and Mining in Social Media</a>, Morgan &amp; Claypool, 2010.
+                                </li>
+                                <li><a href="http://www.pearsonhighered.com/croft1epreview/" target="_blank">Search
+                                    Engines: Information Retrieval in Practice</a>. Bruce Croft, Donald Metzler, Trevor
+                                    Strohman. Addison-Wesley, 2009. <em>An introductory book for search engines.
+                                        Recommended for undergraduate students</em>.
+                                </li>
+                                <li><a href="http://eu.wiley.com/WileyCDA/WileyTitle/productCd-0470849061.html"
+                                       target="_blank">Modeling the Internet and the Web: Probabilistic Methods and
+                                    Algorithms.</a> P. Baldi, P. Frasconi, P. Smyth. Wiley, 2003.<em> Recommended for
+                                    those who have a good foundation in probability theory.</em></li>
+                                <li><a href="http://press.princeton.edu/titles/8216.html" target="_blank">Google's
+                                    PageRank and Beyond: The Science of Search Engine Rankings</a>, Amy N. Langville
+                                    &amp; Carl D. Meyer, Princeton University Press, 2006.<em> It offers a comprehensive
+                                        and erudite presentation of PageRank and related search-engine algorithms, and
+                                        it is written in an approachable way, given the mathematical foundations
+                                        involved.</em></li>
+                                <li><a href="http://www.cse.iitb.ac.in/~soumen/mining-the-web/" target="_blank">Mining
+                                    the Web: Analysis of Hypertext and Semi Structured Data.</a> S. Chakrabarti. Morgan
+                                    Kaufmann, 2002. <em>The best introduction for Web-centric IR.</em></li>
+                            </ul>
+                      <h4>Journals</h4>
+                            <ul>
+                                <li><a href="http://www.kluweronline.com/issn/1384-5810">Data Mining and Knowledge
+                                    Discovery (DMKD) Journal</a></li>
+                                <li><a href="http://www.acm.org/tweb/board.html">ACM Transactions on the Web</a></li>
+                                <li><a href="http://www.ieee.org/organizations/pubs/transactions/tkde.htm">IEEE
+                                    Transactions on Knowledge and Data Engineering (TKDE)</a></li>
+                                <li><a href="http://www.computer.org/portal/web/internet">IEEE Internet Computing</a>
+                                </li>
+                            </ul>
+                            <h4>Proceedings of the International Conferences</h4>
+                            <ul>
+                                <li><a href="http://www2009.org/">WWW</a></li>
+                                <li><a href="http://www.kdd.org/">ACM SIGKDD International Conference on Knowledge
+                                    Discovery and Data Mining</a></li>
+                                <li><a href="http://www.acm.org/sigmod/">ACM SIGMOD</a></li>
+                                <li><a href="http://www.informatik.uni-trier.de/~ley/db/conf/wsdm/index.html">WSDM</a>
+                                </li>
+                            </ul>
+                            <p> </p>
+                            <h4>Software Toolkits &amp; Datasets</h4>
+                            <ul>
+                                <li><a href="http://hadoop.apache.org/core/">Hadoop!</a>, a Map-Reduce paradigm</li>
+                                <li><a href="http://www.cs.waikato.ac.nz/ml/weka/">Mahout</a></li>
+                                <li><a href="http://www.biggorilla.org/">Data Integration and Data Preparation in Python </a></li>
+                                <li><a href="https://www.kaggle.com/">Kaggle: Your Home for Data Science</a></li>
+                                <li><a href="http://www.cs.waikato.ac.nz/ml/weka/">Weka</a></li>
+                                <li><a href="http://lucene.apache.org/" target="_blank">Lucene: A free open source
+                                    information retrieval library</a></li>
+                            </ul>
+                <h4> </h4>
+                            <h4>Related Courses on the WEB</h4>
+                            <ul type="disc">
+                                <li><a href="http://cs246.stanford.edu/">Mining Massive Datasets</a> (Stanford)</li>
+                                <li><a href="http://blogs.ischool.berkeley.edu/i290-abdt-s12/">Analyzing Big Data with
+                                    Twitter</a> (Berkeley)
+                                </li>
+                                <li><a href="http://boston.lti.cs.cmu.edu/classes/11-441/">Search Engines and Web
+                                    Mining</a> (CMU)
+                                </li>
+                                <li><a href="http://www.cs.princeton.edu/courses/archive/spring11/cos435/">Information
+                                    Retrieval, Discovery, and Delivery</a> (Princeton)
+                                </li>
+                                <li><a href="http://www.divms.uiowa.edu/~psriniva/courses/6K278/">Web Mining</a> (Iowa)
+                                </li>
+                                <li><a href="http://facweb.cs.depaul.edu/mobasher/classes/ect584/">Web Data Mining </a>(Depaul)
+                                </li>
+                                <li><a href="http://www.cs.umd.edu/~samir/498/">Algorithms for Analyzing Massive Data
+                                    Sets and Data Mining</a> (Maryland)
+                                </li>
+                                <li><a href="http://www.cs.uoi.gr/~pitoura/courses/dm/index.html">Data Mining</a> (Univeristy
+                                    of Ioannina)
+                                </li>
+                                <li><a href="http://www.cs.bu.edu/~evimaria/cs565-10.html">Data Mining</a> (Boston)<br/>
+                                </li>
+                            </ul>
+                            <br/>
+
+                            <p>&nbsp;</p>
+
+
+                            <p>&nbsp;</p>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="clearer">&nbsp;</div>
+
+
+    </div>
+
+
+    <div id="footer">
+
+
+        <div class="left" id="footer-left"><img src="images/logo-small.gif" alt="" class="left"/>
+
+
+            <p>Spring Semester 2017 | Data Mining on the Web</p>
+
+            <p class="quiet"><a href="http://www.cs.ucy.ac.cy" target="_blank">Computer Science</a> | <a
+                    href="http://www.ucy.ac.cy" target="_blank">University of Cyprus</a></p>
+
+            <div class="clearer">&nbsp;</div>
+
+
+        </div>
+
+
+        <div class="right" id="footer-right">
+
+
+            <p class="large"><a href="index.html">Home</a> <span class="text-separator">|</span> <a
+                    href="announcements.html">News</a> <span class="text-separator">|</span> <a href="lectures.html">Lectures</a>
+                <span class="text-separator">|</span> <a href="labs.html">Labs</a> <span class="text-separator">|</span>
+                <a href="exercises.html">Assignments</a> <span class="text-separator">|</span> <a href="resources.html">Resources</a>
+            </p>
+
+
+        </div>
+
+
+        <div class="clearer">&nbsp;</div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+
+</html>

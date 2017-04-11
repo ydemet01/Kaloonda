@@ -24,7 +24,7 @@ typedef struct thread_node {
     struct thread_node *next;
     pthread_t *thread;
     pthread_mutex_t nodemutex;
-//    pthread_cond_t cond;
+    pthread_cond_t cond;
 //    char *request;
     
     int newsock, clientlen;
@@ -40,8 +40,8 @@ typedef struct {
     int length;
 }THREADPOOL;
 
-extern THREADPOOL *threadpool;
-int threadpoolInit(int threads);
+int threadpoolInit(unsigned long threads);
 int dequeue(THREADPOOL *q, THREAD_NODE **retval);
 int enqueue (THREADPOOL *q, THREAD_NODE *node);
+void returnThreadpool(THREADPOOL **ret);
 #endif /* ThreadPool_h */
