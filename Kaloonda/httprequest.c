@@ -14,7 +14,6 @@ char *sgets( char * str, int num, char **input )
     int  numread = 0;
     
     while ( numread + 1 < num && *next ) {
-//    while(*next!='\r' && *next+1!='\n'){
         int isnewline = ( *next == '\n' );
         *str++ = *next++;
         numread++;
@@ -35,14 +34,14 @@ char *sgets( char * str, int num, char **input )
 
 void get_filename_ext(char *filename, char **extension) {
     char *dot=(char *)calloc(0, 20);
-//    const char *dot = strrchr(filename, '.');
     dot=strrchr(filename, '.');
     if(!dot || dot == filename) *extension="";
     *extension=dot+1;
 }
 
 void getTypeFromExtension(char *extension, char **content_type, int *content_type_size, bool *isBinary){
-    *isBinary=false;
+    if(isBinary!=NULL)
+        *isBinary=false;
     if((strcmp(extension, "txt")==0) || (strcmp(extension, "sed")==0) || (strcmp(extension, "awk")==0) || (strcmp(extension, "c")==0) || (strcmp(extension, "h")==0)){
         *content_type=(char *)malloc(11);
         *content_type="text/plain";
@@ -57,19 +56,22 @@ void getTypeFromExtension(char *extension, char **content_type, int *content_typ
         *content_type=(char *)malloc(11);
         *content_type="image/jpeg";
         *content_type_size=10;
-        *isBinary=true;
+        if(isBinary!=NULL)
+            *isBinary=false;
     }
     else if(strcmp(extension, "gif")==0){
         *content_type=(char *)malloc(10);
         *content_type="image/gif";
         *content_type_size=9;
-        *isBinary=true;
+        if(isBinary!=NULL)
+            *isBinary=false;
     }
     else if(strcmp(extension, "png")==0){
         *content_type=(char *)malloc(10);
         *content_type="image/png";
         *content_type_size=9;
-        *isBinary=true;
+        if(isBinary!=NULL)
+            *isBinary=false;
     }
     else if(strcmp(extension, "css")==0){
         *content_type=(char *)malloc(9);
@@ -85,28 +87,28 @@ void getTypeFromExtension(char *extension, char **content_type, int *content_typ
         *content_type=(char *)malloc(16);
         *content_type="application/pdf";
         *content_type_size=15;
-        *isBinary=true;
+        if(isBinary!=NULL)
+            *isBinary=false;
     }
     else{
         *content_type=(char *)malloc(25);
         *content_type="application/octet-stream";
         *content_type_size=24;
-        *isBinary=true;
+        if(isBinary!=NULL)
+            *isBinary=false;
     }
 }
 
 
 int openFileAtLink(char *link, char **extension, bool readContent, unsigned char **content, bool *isBinary, char **content_type, int *content_type_size, unsigned long *content_length){
     char *path=(char *)malloc(6+strlen(link));
-//    char *cont=NULL;
-//    path="./www";
     strcpy(path, "./www");
     strcat(path, link);
     get_filename_ext(link, extension);
     getTypeFromExtension(*extension, content_type, content_type_size, isBinary);
     
     FILE *fp=NULL;
-    if(*isBinary)
+    if(isBinary!=NULL && *isBinary)
         fp=fopen(path, "rb");
     else
         fp=fopen(path, "r");
@@ -114,45 +116,26 @@ int openFileAtLink(char *link, char **extension, bool readContent, unsigned char
         return FILE_NOT_FOUND;
     }
     
-//    int size=512;
-//    if(readContent){
-//        cont=(char *)malloc(512);
-////        *content=(char *)malloc(512);
-//        while((fgets(cont, 512, fp))!=NULL){
-//            size+=512;
-//            char *s=NULL;
-//            if((s=(char *)realloc(*content, size))==NULL){
-//                return EXIT_FAILURE;
-//            }
-////            content=(char **)realloc(*content, size);
-//            *content=s;
-//            strcat(*content, cont);
-//            
-//            char *u=*content;
-//            u+=size-512;
-//            memset(u, 'a', 512);
-//        }
-//    }
-    
-    
     fseek(fp, 0, SEEK_END);
     *content_length=ftell(fp);
     rewind(fp);
+    
+    if(!readContent){
+        free(path);
+        fclose(fp);
+        return FILE_FOUND;
+    }
+    
+    
     *content=(unsigned char *)malloc(*content_length);
     fread(*content, *content_length+1, 1, fp);
     
-    
-    
     free(path);
-//    free(cont);
     fclose(fp);
     return FILE_FOUND;
 }
 
 int serveRequest(char *request, char **function, char **link, char **protocolName, char **protocolVersion){
-//    char *request="GET /index.html HTTP/1.1\r\nUser-Agent: My-web-browser\r\nHost: astarti.cs.ucy.ac.cy:30000\r\nConnection: keep-alive\r\n\r\n";
-//    char s[100];
-//    char function[30], link[30], protocolName[30], protocolVersion[30];
     char *s=(char *)malloc(1024);
     
     char *token;
@@ -170,27 +153,85 @@ int serveRequest(char *request, char **function, char **link, char **protocolNam
         else{
             char t1[30], t2[30];
             sscanf(s, "%s %s\r\n", t1, t2);
-        //    if(strcmp(t1,"User-Agent:")==0){
-        //        continue;
-        //    }
-        //    else if(strcmp(t1,"Host:")==0){
-        //        continue;
-        //    }
-        //    else if(strcmp(t1,"Connection:")==0){
+            //    if(strcmp(t1,"User-Agent:")==0){
+            //        continue;
+            //    }
+            //    else if(strcmp(t1,"Host:")==0){
+            //        continue;
+            //    }
+            //    else if(strcmp(t1,"Connection:")==0){
             if(strcmp(t1,"Connection:")==0){
                 if(strcmp(t2, "close")==0)
                     keepAlive=false;
             }
         }
     }
-    
-//    printf("%s\n%s\n%s\n%s\n%d\n", *function, *link, *protocolName, *protocolVersion, keepAlive);
     free(s);
     return keepAlive;
 }
 
+void createHeaderAndReturnContent(char **header, int webRequestFlag, unsigned char **content, char *link, bool *isBinary, unsigned long *content_length){
+    char *extension=NULL, *content_type=NULL;
+    int found;
+    int content_type_length=0;
+    unsigned long header_size;
+    if(webRequestFlag==HTTP_GET_REQUEST)
+        found=openFileAtLink(link, &extension, true, content, isBinary, &content_type, &content_type_length, content_length);
+    else if(webRequestFlag==HTTP_HEAD_REQUEST)
+        found=openFileAtLink(link, &extension, false, NULL, NULL, &content_type, &content_type_length, content_length);
+    else if(webRequestFlag==HTTP_DELETE_REQUEST){
+        found=openFileAtLink(link, &extension, false, NULL, NULL, &content_type, &content_type_length, content_length);
+    }
+    else{
+        header_size=114;
+        *content=(unsigned char *)"<html><body><h1>Method not implemented.</h1></body></html>";
+        *header=(char *) malloc(header_size);
+        sprintf(*header, "HTTP/1.1 501 Not Implemented\r\nServer: Kaloonda\r\nContent-Length: 50\r\nConnection: close\r\nContent-Type: text/html\r\n\r\n");
+        return;
+    }
+    
+    if(found==FILE_NOT_FOUND){
+        //404 - File Not Found
+        unsigned long header_size=113;
+        *header=(char *) malloc(header_size);
+        *content=(unsigned char *)"<html><body><h1>File not found.</h1></body></html>";
+        sprintf(*header, "HTTP/1.1 404 File Not Found\r\nServer: Kaloonda\r\nContent-Length: 50\r\nConnection: close\r\nContent-Type: text/html\r\n\r\n");
+    }
+    else{
+        char contLengthAsString[10];
+        sprintf(contLengthAsString, "%lu", *content_length);
+        unsigned long contLengthAsStringLength=strlen(contLengthAsString);
+        if(webRequestFlag==HTTP_GET_REQUEST || webRequestFlag==HTTP_HEAD_REQUEST){
+            header_size=90+content_type_length+contLengthAsStringLength;
+            
+            *header=(char *) malloc(header_size);
+            sprintf(*header, "HTTP/1.1 200 OK\r\nServer: Kaloonda\r\nContent-Length: %s\r\nConnection: close\r\nContent-Type: %s\r\n\r\n", contLengthAsString, content_type);
+        }
+        else if(webRequestFlag==HTTP_DELETE_REQUEST){
+            int delRes;
+            char *path=(char *)malloc(6+strlen(link));
+            strcpy(path, "./www");
+            strcat(path, link);
+            delRes=remove(path);
+            //            free(content);
+            if(!delRes){
+                header_size=99+contLengthAsStringLength;
+                *content=(unsigned char *)"<html><body><h1>URL deleted.</h1></body></html>";
+                *header=(char *) malloc(header_size);
+                sprintf(*header, "HTTP/1.1 200 OK\r\nServer: Kaloonda\r\nContent-Length: %s\r\nConnection: close\r\nContent-Type: text/html\r\n\r\n", contLengthAsString);
+            }
+            else{
+                header_size=118+contLengthAsStringLength;
+                *content=(unsigned char *)"<html><body><h1>File was not deleted.</h1></body></html>";
+                *header=(char *) malloc(header_size);
+                sprintf(*header, "HTTP/1.1 500 Internal Server Error\r\nServer: Kaloonda\r\nContent-Length: %s\r\nConnection: close\r\nContent-Type: text/html\r\n\r\n", contLengthAsString);
+            }
+        }
+    }
+}
 
-int readResponseAndExecute(THREAD_NODE *n){//, char **function, char **link, char **protocolName, char **protocolVersion){
+
+int readResponseAndExecute(THREAD_NODE *n){
     char *buf=(char *)malloc(1024);
     char *function=(char *)malloc(30);
     char *link=(char *)malloc(300);
@@ -200,104 +241,77 @@ int readResponseAndExecute(THREAD_NODE *n){//, char **function, char **link, cha
     /* Get message */
     if (read(n->newsock, buf, 1024) < 0) {
         perror("read");
-//        exit(1);
+        //        exit(1);
     }
     keepAlive=serveRequest(buf, &function, &link, &protocolName, &protocolVersion);
     unsigned char *content=NULL;
-    char *response=NULL;
-    char *extension=NULL, *content_type=NULL;
-    int found;
-    unsigned long content_length=0, response_size=0;
-    int content_type_length=0;
-    char *connection=NULL;
-//    if(keepAlive){
-//        connection=(char *)malloc(11);
-//        connection="keep-alive";
-//    }
-//    else{
-//        connection=(char *)malloc(6);
-//        connection="close";
-//    }
-    connection=(char *)malloc(6);
-    connection="close";
+    char *header=NULL;
+    unsigned long content_length=0;
     
     if(strcmp(function, "GET")==0){
         //GET function
-        
-        if((found=openFileAtLink(link, &extension, true, &content, &isBinary, &content_type, &content_type_length, &content_length))==FILE_NOT_FOUND){
-            //response as 404-File Not Found
-//            response_size=126+19;
-//            if(keepAlive)
-//                response_size+=10;
-//            else
-//                response_size+=5;
-            response_size=150;
-            response=(char *)malloc(response_size);
-//            sprintf(response, "HTTP/1.1 404 Not Found\r\nServer: Kaloonda\r\nContent-Length: 20\r\nConnection: %s\r\nContent-Type: text/plain\r\n\r\nDocument not found!\r\n", connection);
-            sprintf(response, "HTTP/1.1 404 Not Found\r\nServer: Kaloonda\r\nContent-Length: 20\r\nConnection: close\r\nContent-Type: text/plain\r\n\r\nDocument not found!\r\n");
-            /* Get message */
-            if (write(n->newsock, response, response_size) < 0) {
+        createHeaderAndReturnContent(&header, HTTP_GET_REQUEST, &content, link, &isBinary, &content_length);
+        if (write(n->newsock, header, strlen(header)) < 0) {
+            perror("write");
+            exit(1);
+        }
+        if(!isBinary){
+            if (write(n->newsock, content, strlen((char *)content)) < 0) {
                 perror("write");
                 exit(1);
             }
-            
-            keepAlive=false;
-        }
-        if(content==NULL){
-            //Unable to realloc. Handle it!
+            if (write(n->newsock, "\r\n", 2) < 0) {
+                perror("write");
+                exit(1);
+            }
         }
         else{
-//            content_length=strlen(content);
-            
-            char contLengthAsString[10];
-            sprintf(contLengthAsString, "%lu", content_length);
-//            itoa(content_length, contLengthAsString, 10);
-            unsigned long contLengthAsStringLength=strlen(contLengthAsString);
-            
-            
-//            getTypeFromExtension(extension, &content_type, &content_type_length);
-            
-            
-//            header_size=83+content_length+content_type_length;
-            response_size=87+content_length+content_type_length+contLengthAsStringLength;
-            if(keepAlive)
-                response_size+=10;
-            else
-                response_size+=5;
-            response=(char *)malloc(response_size+100);
-            if(!isBinary){
-                sprintf(response, "HTTP/1.1 200 OK\r\nServer: Kaloonda\r\nContent-Length: %s\r\nConnection: %s\r\nContent-Type: %s\r\n\r\n%s\r\n", contLengthAsString, connection, content_type, content);
-                /* Get message */
-                if (write(n->newsock, response, response_size) < 0) {
-                    perror("write");
-                    exit(1);
-                }
+            if (send(n->newsock, content, strlen((char *)content), 0) < 0) {
+                perror("send");
+                exit(1);
             }
-            else{
-                sprintf(response, "HTTP/1.1 200 OK\r\nServer: Kaloonda\r\nContent-Length: %s\r\nConnection: %s\r\nContent-Type: %s\r\n\r\n", contLengthAsString, connection, content_type);
-                /* Get message */
-                if (write(n->newsock, response, response_size-content_length-2) < 0) {
-                    perror("write");
-                    exit(1);
-                }
-                if (send(n->newsock, content, content_length, 0) < 0) {
-                    perror("send");
-                    exit(1);
-                }
-            }
-//            free(content_type);
         }
+        free(content);
         
-
     }
     else if(strcmp(function, "HEAD")==0){
         //HEAD function
+        createHeaderAndReturnContent(&header, HTTP_HEAD_REQUEST, NULL, link, NULL, &content_length);
+        if (write(n->newsock, header, strlen(header)) < 0) {
+            perror("write");
+            exit(1);
+        }
     }
     else if(strcmp(function, "DELETE")==0){
         //DELETE function
+        createHeaderAndReturnContent(&header, HTTP_DELETE_REQUEST, &content, link, NULL, &content_length);
+        if (write(n->newsock, header, strlen(header)) < 0) {
+            perror("write");
+            exit(1);
+        }
+        if (write(n->newsock, content, strlen((char *)content)) < 0) {
+            perror("write");
+            exit(1);
+        }
+        if (write(n->newsock, "\r\n", 2) < 0) {
+            perror("write");
+            exit(1);
+        }
     }
     else{
-        return false;
+        createHeaderAndReturnContent(&header, HTTP_NOT_SUPPORTED_REQUEST, &content, NULL, NULL, NULL);
+        if (write(n->newsock, header, strlen(header)) < 0) {
+            perror("write");
+            exit(1);
+        }
+        if (write(n->newsock, content, strlen((char *)content)) < 0) {
+            perror("write");
+            exit(1);
+        }
+        if (write(n->newsock, "\r\n", 2) < 0) {
+            perror("write");
+            exit(1);
+        }
     }
     
     
@@ -306,10 +320,7 @@ int readResponseAndExecute(THREAD_NODE *n){//, char **function, char **link, cha
     free(link);
     free(protocolName);
     free(protocolVersion);
-    free(content);
-    free(response);
-//    free(extension);
-    
+    free(header);
     
     return keepAlive;
 }
@@ -331,9 +342,9 @@ void *threadFunction(void *arg){
         }
         
         bool keepAlive=true;
-//        while(keepAlive){
-            keepAlive=readResponseAndExecute(n);//, &function, &link, &protocolName, &protocolVersion);
-//        }
+        //        while(keepAlive){
+        keepAlive=readResponseAndExecute(n);//, &function, &link, &protocolName, &protocolVersion);
+        //        }
         if ((err=pthread_mutex_unlock(&(n->nodemutex)))) { /* unlock mutex */
             printf("pthread_mutex_unlock: %s\n",strerror(err));
             exit(1);
@@ -349,7 +360,6 @@ void *threadFunction(void *arg){
             exit(1);
         }
     }
-    
 }
 
 
