@@ -325,7 +325,7 @@ void createHeaderAndReturnContent(char **header, int webRequestFlag, unsigned ch
         unsigned long header_size=150;
         *header=(char *) malloc(header_size);
         *content=(unsigned char *)"<html><body><h1>File not found.</h1></body></html>";
-        sprintf(*header, "HTTP/1.1 404 File Not Found\r\nDate: %s, %2d %s %s %s GMT\r\nServer: Kaloonda\r\nContent-Length: 80\r\nConnection: close\r\nContent-Type: text/html\r\n\r\n", day, info->tm_mday, month, year, time);
+        sprintf(*header, "HTTP/1.1 404 File Not Found\r\nDate: %s, %2d %s %s %s GMT\r\nServer: Kaloonda\r\nContent-Length: 50\r\nConnection: close\r\nContent-Type: text/html\r\n\r\n", day, info->tm_mday, month, year, time);
     }
     else{
         char contLengthAsString[10];
