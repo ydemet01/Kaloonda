@@ -81,16 +81,18 @@ int webserverInit(int wport){
         if(threadpool->length>0){
             dequeue(threadpool, &node);
         }
+        else
+            continue;
         if ((err=pthread_mutex_unlock(&(threadpool->poolLock)))) { /* unlock mutex */
             printf("pthread_mutex_unlock: %s\n",strerror(err));
             exit(1);
         }
-        
-        node->client=client;
-        node->clientlen=clientlen;
-        node->clientptr=clientptr;
+//        
+//        node->client=client;
+//        node->clientlen=clientlen;
+//        node->clientptr=clientptr;
         node->newsock=newsock;
-        node->rem=rem;
+//        node->rem=rem;
         
         if ((err = pthread_mutex_lock(&(node->nodemutex)))) { /* lock mutex */
             printf("pthread_mutex_lock: %s\n",strerror(err));

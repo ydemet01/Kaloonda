@@ -17,10 +17,10 @@
 #include <stdbool.h>
 #include "signals.h"
 #include "ThreadPool.h"
+#include <time.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 
-
-//THREADPOOL *threadpool;
-//void *serveRequest();
 void *threadFunction(void *);
 
 #endif /* httprequest_h */
