@@ -454,7 +454,6 @@ int readResponseAndExecute(THREAD_NODE *n){
                 exit(1);
             }
         }
-//        free(content);
         
     }
     else if(strcmp(function, "HEAD")==0){
@@ -540,9 +539,7 @@ void *threadFunction(void *arg){
         }
         
         bool keepAlive=true;
-        //        while(keepAlive){
-        keepAlive=readResponseAndExecute(n);//, &function, &link, &protocolName, &protocolVersion);
-        //        }
+        keepAlive=readResponseAndExecute(n);
         if ((err=pthread_mutex_unlock(&(n->nodemutex)))) { /* unlock mutex */
             printf("pthread_mutex_unlock: %s\n",strerror(err));
             exit(1);
@@ -559,6 +556,127 @@ void *threadFunction(void *arg){
         }
     }
 }
+
+#ifdef HTTP_REQUEST_TEST
+int main(){
+    unsigned char *buf=NULL;
+    char *function=(char *)malloc(30);
+    char *link=(char *)malloc(300);
+    char *protocolName=(char *)malloc(30);
+    char *protocolVersion=(char *)malloc(30);
+    bool keepAlive=true, isBinary=false;
+    unsigned char *body=NULL;
+    unsigned long bodyLength=0;
+    unsigned char *content=NULL;
+    char *header=NULL;
+    unsigned long content_length=0;
+    
+    int i=0;
+    
+    for(i=0; i<6; i++){
+        buf=(unsigned char *)malloc(1000);
+        
+        switch (i) {
+            case 0:
+                strcpy(buf, "GET /epl371/index.html HTTPF/1.1\r\n\r\n");
+                break;
+            case 1:
+                strcpy(buf, "GET /epl371/index.html HTTP/1.0\r\n\r\n");
+                break;
+            case 2:
+                strcpy(buf, "GET /epl371/index.html HTTP/1.1\r\n\r\n");
+                break;
+            case 3:
+                strcpy(buf, "HEAD /epl371/index.html HTTP/1.1\r\n\r\n");
+                break;
+            case 4:
+                strcpy(buf, "DELETE /epl371/file.txt HTTP/1.1\r\n\r\n");
+                break;
+            case 5:
+                strcpy(buf, "OPTIONS /epl371/file.txt HTTP/1.1\r\n\r\n");
+                break;
+            default:
+                strcpy(buf, "GET /epl371/index.html HTTPF/1.1\r\n\r\n");
+                break;
+        }
+        
+        serveRequest(buf, &function, &link, &protocolName, &protocolVersion, &body, &bodyLength);
+        
+        if(strcmp(protocolName, "HTTP")!=0){
+            if(i==0){
+                printf("TEST 1 Successful : Protocol Test");
+            }
+            else{
+                printf("TEST 1 Failure : Protocol Test");
+            }
+            continue;
+        }
+        if(strcmp(protocolVersion, "1.1")!=0){
+            if(i==1){
+                printf("TEST 2 Successful : Protocol Version Test");
+            }
+            else{
+                printf("TEST 2 Failure : Protocol Version Test");
+            }
+            continue;
+        }
+        
+        
+        
+        if(strcmp(function, "GET")==0){
+            //GET function
+            createHeaderAndReturnContent(&header, HTTP_GET_REQUEST, &content, link, &isBinary, &content_length, NULL, 0);
+            if(i==2){
+                printf("TEST 3 Successful : GET Request Test");
+            }
+            else{
+                printf("TEST 3 Failure : GET Request Test");
+            }
+            continue;
+            
+        }
+        else if(strcmp(function, "HEAD")==0){
+            //HEAD function
+            createHeaderAndReturnContent(&header, HTTP_HEAD_REQUEST, NULL, link, NULL, &content_length, NULL, 0);
+            if(i==3){
+                printf("TEST 4 Successful : HEAD Request Test");
+            }
+            else{
+                printf("TEST 4 Failure : HEAD Request Test");
+            }
+            continue;
+        }
+        else if(strcmp(function, "DELETE")==0){
+            //DELETE function
+            createHeaderAndReturnContent(&header, HTTP_DELETE_REQUEST, &content, link, NULL, &content_length, NULL, 0);
+            if(i==4){
+                printf("TEST 5 Successful : DELETE Request Test");
+            }
+            else{
+                printf("TEST 5 Failure : DELETE Request Test");
+            }
+            continue;
+        }
+        else{
+            createHeaderAndReturnContent(&header, HTTP_NOT_SUPPORTED_REQUEST, &content, NULL, NULL, NULL, NULL, 0);
+            if(i==5){
+                printf("TEST 6 Successful : DELETE Request Test");
+            }
+            else{
+                printf("TEST 6 Failure : DELETE Request Test");
+            }
+        }
+        
+        free(buf)
+        free(function);
+        free(link);
+        free(protocolName);
+        free(protocolVersion);
+        free(header);
+        
+    }
+}
+#endif
 
 
 

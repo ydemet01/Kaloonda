@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <netinet/in.h>
 #include "httprequest.h"
-
+#define perror2(s, e) fprintf(stderr, "%s: %s\n", s, strerror(e))
 
 typedef struct thread_node {
     struct thread_node *next;

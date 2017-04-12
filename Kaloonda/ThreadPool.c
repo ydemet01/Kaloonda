@@ -25,10 +25,8 @@ int enqueue (THREADPOOL *q, THREAD_NODE *node) {
 
 int dequeue(THREADPOOL *q, THREAD_NODE **retval){
     THREAD_NODE *p=NULL;
-// copy pointer used for free()
     if ((q == NULL) || (q->head == NULL)){
-//        printf("Sorry, THREADPOOL is empty\n");
-        return EXIT_FAILURE; //return EXIT_CODE_DEADPOOL_NOTFOUND
+        return EXIT_FAILURE;
     }
     if (retval== NULL) {
         printf("Retval is null");
@@ -38,7 +36,6 @@ int dequeue(THREADPOOL *q, THREAD_NODE **retval){
     p = q->head;
     *retval=q->head;
     q->head = q->head->next;
-//    free(p);
     --(q->length);
 
     if (q->length == 0) {
@@ -55,11 +52,6 @@ int initTHREADPOOL(THREADPOOL **threadpool) {
     (*threadpool)->head = (*threadpool)->tail = NULL;
     (*threadpool)->length = 0;
     pthread_mutex_init(&((*threadpool)->poolLock),NULL);
-   /* if (err = pthread_mutex_unlock(&(*threadpool)->poolLock)) {
-        //perror2(pthread_mutex_lock);
-        return EXIT_FAILURE;
-    }
-*/
     return EXIT_SUCCESS;
 }
 
@@ -75,15 +67,10 @@ int threadpoolInit(unsigned long threads){
             return EXIT_FAILURE; // EXIT_CODE_OUT_OF_MEMORY
         }
         pthread_mutex_init(&(node->nodemutex),NULL);
-//        if ((err = pthread_mutex_lock(&(node->nodemutex)))) {
-//            /* lock Mutex */
-//            //perror2(pthread_mutex_lock);
-//            return EXIT_FAILURE;//EXIT_CODE_MUTEX_FAIL
-//        }
         pthread_cond_init(&(node->cond), NULL);
         pthread_t p;
         if ((err = pthread_create(&p, NULL, threadFunction, (void *) node))) {
-//            perror2("pthread_create", err);
+            perror2("pthread_create", err);
             return EXIT_FAILURE;
         }
         node->thread=&p;
@@ -97,5 +84,29 @@ int threadpoolInit(unsigned long threads){
 void returnThreadpool(THREADPOOL **ret){
     *ret=threadpool;
 }
+
+#ifdef THREADPOOL_TEST
+int main(){
+    int err=threadpoolInit(10);
+    if(err=EXIT_SUCCESS)
+        printf("TEST 1 Success: Threadpool Initialized");
+    else{
+        printf("TEST 1 Failure: Threadpool Initialized");
+    }
+    THREAD_NODE *node=NULL;
+    dequeue(threadpool, &node);
+    if(node!=NULL)
+        printf("TEST 2 Success: Threadpool Dequeue");
+    else{
+        printf("TEST 2 Failure: Threadpool Dequeue");
+    }
+    err=enqueue(threadpool, node)
+    if(err=EXIT_SUCCESS)
+        printf("TEST 3 Success: Threadpool Enqueue");
+    else{
+        printf("TEST 3 Failure: Threadpool Enqueue");
+    }
+}
+#endif
 
 

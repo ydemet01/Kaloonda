@@ -52,16 +52,13 @@ int socketEstablishment(int port){
 int webserverInit(int wport){
     int err;
     port=wport;
-//    socketEstablishment(port);
-
-//    char buf[1024];
     
     while(1) {
         clientptr = (struct sockaddr *) &client;
         clientlen = sizeof(client);
         /* Accept connection */
         if ((newsock = accept(sock, clientptr, &clientlen)) < 0) {
-            //perror("Accept Failed");
+            perror("Accept Failed");
             exit(ACCEPT_FAILED);
         }
         /* Using IP address find DNS name (i.e., reverse DNS)*/
@@ -87,12 +84,7 @@ int webserverInit(int wport){
             printf("pthread_mutex_unlock: %s\n",strerror(err));
             exit(1);
         }
-//        
-//        node->client=client;
-//        node->clientlen=clientlen;
-//        node->clientptr=clientptr;
         node->newsock=newsock;
-//        node->rem=rem;
         
         if ((err = pthread_mutex_lock(&(node->nodemutex)))) { /* lock mutex */
             printf("pthread_mutex_lock: %s\n",strerror(err));
@@ -106,21 +98,19 @@ int webserverInit(int wport){
             printf("pthread_mutex_unlock: %s\n",strerror(err));
             exit(1);
         }
-        
-//        if ((err = pthread_cond_signal(&(node->cond)))) {
-//            printf("pthread_cond_signal: %s\n",strerror(err));
-//            exit(1);
-//        }
-     
-        /*
-         /////////
-         /////////
-         //Assign request to a thread
-         /////////
-         /////////
-         */
     }
     
     return WEBSERVER_INIT_SUCCESS;
 }
+
+#ifdef CONNECTION_TEST
+int main(){
+    int err=webserverInit(8080);
+    if(err=WEBSERVER_INIT_SUCCESS)
+        printf("TEST 1 Success: Webserver Initialized");
+    else{
+        printf("TEST 1 Failure: Webserver Initialized");
+    }
+}
+#endif
 

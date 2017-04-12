@@ -37,6 +37,7 @@
 		806B57951E985BA9002D1FAA /* httprequest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = httprequest.c; sourceTree = "<group>"; };
 		806B57961E985BA9002D1FAA /* httprequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = httprequest.h; sourceTree = "<group>"; };
 		806B57981E9867B8002D1FAA /* ThreadPool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ThreadPool.c; sourceTree = "<group>"; };
+		80E8B0621E9E96F7008B1545 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +54,7 @@
 		806B57771E98056C002D1FAA = {
 			isa = PBXGroup;
 			children = (
+				80E8B0621E9E96F7008B1545 /* README.txt */,
 				805954101E9D2FB50059DBB5 /* www */,
 				806B57821E98056C002D1FAA /* Kaloonda */,
 				806B57811E98056C002D1FAA /* Products */,
